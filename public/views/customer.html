@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading collapsed">
+     <h4 class="panel-title">
+        <a class="accordion-toggle"
+            data-toggle="collapse"
+            data-target="#collapse{{$ctrl.index}}"
+            data-parent="#accordion"
+            aria-expanded="false">
+            <span class="show-right glyphicon glyphicon-chevron-right"></span>
+            <span class="show-down glyphicon glyphicon-chevron-down"></span>
+               {{$ctrl.customer.dealerName}}
+        </a>
+     </h4>
+  </div>
+
+  <div id="collapse{{$ctrl.index}}" class="panel-collapse collapse">
+     <div class="panel-body">
+         TIN: {{$ctrl.customer.tin}}
+     </div>
+  </div>
+</div>

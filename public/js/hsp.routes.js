@@ -15,7 +15,9 @@ function config ($urlRouterProvider, $stateProvider) {
     })
     .state('customers', {
         url: '/customers',
-        templateUrl: 'views/customers.html'
+        templateUrl: 'views/customers.html',
+        controller: 'CustomersController',
+        controllerAs: 'CustomersController'
     });
 
 }
