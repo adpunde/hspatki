@@ -50,14 +50,23 @@
 }
 
 .panel-group {
-    margin: 10px 10px 10px 10px;
+    margin: 10px 10px 40px 10px;
 }
 
-a[aria-expanded=true] .show-right {
+.panel-title > a[aria-expanded=true] .show-chevron-right {
     display: none;
 }
-a[aria-expanded=false] .show-down {
+.panel-title > a[aria-expanded=false] .show-chevron-down {
     display: none;
+}
+.panel-title > a:hover {
+    cursor: pointer;
+}
+.well {
+    margin-bottom: 0;
+}
+.panel-body {
+    margin-left: 20px;
 }
 
 @media (max-width: 767px) {

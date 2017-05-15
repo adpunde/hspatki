@@ -2,20 +2,51 @@
   <div class="panel-heading collapsed">
      <h4 class="panel-title">
         <a class="accordion-toggle"
-            data-toggle="collapse"
-            data-target="#collapse{{$ctrl.index}}"
-            data-parent="#accordion"
-            aria-expanded="false">
-            <span class="show-right glyphicon glyphicon-chevron-right"></span>
-            <span class="show-down glyphicon glyphicon-chevron-down"></span>
-               {{$ctrl.customer.dealerName}}
+        data-toggle="collapse"
+        data-target="#collapse{{$ctrl.index}}"
+        data-parent="#accordion"
+        aria-expanded="false">
+            <span class="show-chevron-right glyphicon glyphicon-chevron-right"></span>
+            <span class="show-chevron-down glyphicon glyphicon-chevron-down"></span>
+            {{$ctrl.customer.dealerName}}
         </a>
      </h4>
   </div>
 
   <div id="collapse{{$ctrl.index}}" class="panel-collapse collapse">
      <div class="panel-body">
-         TIN: {{$ctrl.customer.tin}}
+         <div class="row">
+             <div class="col-md-2 well well-sm">TIN</div>
+             <div class="col-md-4 well well-sm">{{$ctrl.customer.tin}}</div>
+         </div>
+         <div class="row">
+             <div class="col-md-2 well well-sm">Person Name</div>
+             <div class="col-md-4 well well-sm">{{$ctrl.customer.personName}}</div>
+         </div>
+         <div class="row">
+             <div class="col-md-2 well well-sm">Landline1</div>
+             <div class="col-md-4 well well-sm">{{$ctrl.customer.landline1}}</div>
+         </div>
+         <div class="row">
+             <div class="col-md-2 well well-sm">Landline2</div>
+             <div class="col-md-4 well well-sm">{{$ctrl.customer.landline2}}</div>
+         </div>
+         <div class="row">
+             <div class="col-md-2 well well-sm">Mobile1</div>
+             <div class="col-md-4 well well-sm">{{$ctrl.customer.mobile1}}</div>
+         </div>
+         <div class="row">
+             <div class="col-md-2 well well-sm">Mobile2</div>
+             <div class="col-md-4 well well-sm">{{$ctrl.customer.mobile2}}</div>
+         </div>
+         <div class="row">
+             <div class="col-md-2 well well-sm">Email1</div>
+             <div class="col-md-4 well well-sm">{{$ctrl.customer.email1}}</div>
+         </div>
+         <div class="row">
+             <div class="col-md-2 well well-sm">Email2</div>
+             <div class="col-md-4 well well-sm">{{$ctrl.customer.email2}}</div>
+         </div>
      </div>
   </div>
 </div>

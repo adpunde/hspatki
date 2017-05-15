@@ -1,0 +1,21 @@
+<div id="main-content" class="container">
+    <h1>Transactions</h1>
+
+    <div id="searchTrans">
+        <input type="text" ng-model="ctrl.transName" ng-keyup="ctrl.search();">
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-6">
+                <ol>
+                    <li class="well" ng-repeat="trans in ctrl.filtered">
+                        {{trans.tin}} {{trans.dealerName}}<br>
+                        {{trans.date}}<br>
+                        {{trans.type}}<br>
+                        {{trans.filePath}}<br>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

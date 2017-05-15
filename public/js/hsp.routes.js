@@ -17,7 +17,13 @@ function config ($urlRouterProvider, $stateProvider) {
         url: '/customers',
         templateUrl: 'views/customers.html',
         controller: 'CustomersController',
-        controllerAs: 'CustomersController'
+        controllerAs: 'ctrl'
+    })
+    .state('transactions', {
+        url: '/transactions',
+        templateUrl: 'views/transactions.html',
+        controller: 'TransactionsController',
+        controllerAs: 'ctrl'
     });
 
 }
