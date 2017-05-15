@@ -27,7 +27,7 @@ require('./app/routes')(app);
 
 // start the server
 var server = app.listen(app.get('port'), function () {
-    console.log('Server running at: ' + conf.port);
+    console.log('Server running');
 });
 
 // process.on('SIGINT', function () {
