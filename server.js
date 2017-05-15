@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var app = express();
 
 //var db = require('./config/db');
-var conf = require('./config/conf');
+//var conf = require('./config/conf');
 
 // Connect to mongodb using mongoose ODM
 //db.connect({ autoRetry: true });
@@ -24,14 +24,14 @@ app.use(express.static('public'));
 require('./app/routes')(app);
 
 // start the server
-var server = app.listen(conf.port, conf.hostip, function () {
+var server = app.listen(process.env.PORT || 4000, function () {
     console.log('Server running at: http://' + conf.hostip + ':'+ conf.port);
 });
 
 process.on('SIGINT', function () {
     console.log('Stoppping the server');
     server.close();
-    db.disconnect();
+    //db.disconnect();
     process.exit();
 });
 
