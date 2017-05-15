@@ -11,7 +11,9 @@
         "url": "git+https://github.com/adpunde/hspatki.git"
     },
     "keywords" : [
-        "heroku"
+        "heroku",
+        "node",
+        "express"
     ],
     "dependencies": {
         "async": "^2.4.0",

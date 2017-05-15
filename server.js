@@ -20,20 +20,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // serve static files
 app.use(express.static('public'));
 
+app.set('port', (process.env.PORT || 4000));
+
 // routes
 require('./app/routes')(app);
 
 // start the server
-var server = app.listen(process.env.PORT || 4000, function () {
-    console.log('Server running at: http://' + conf.hostip + ':'+ conf.port);
+var server = app.listen(app.get('port'), function () {
+    console.log('Server running at: ' + conf.port);
 });
 
-process.on('SIGINT', function () {
-    console.log('Stoppping the server');
-    server.close();
-    //db.disconnect();
-    process.exit();
-});
+// process.on('SIGINT', function () {
+//     console.log('Stoppping the server');
+//     server.close();
+//     //db.disconnect();
+//     process.exit();
+// });
 
 // export app
 module.exports = app;
