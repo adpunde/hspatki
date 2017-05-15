@@ -24,8 +24,12 @@ function config ($urlRouterProvider, $stateProvider) {
         templateUrl: 'views/transactions.html',
         controller: 'TransactionsController',
         controllerAs: 'ctrl'
+    })
+    .state('transaction-add', {
+        templateUrl: 'views/transaction-add.html',
+        controller: 'TransactionAddController',
+        controllerAs: 'ctrl'
     });
-
 }
 
 })();

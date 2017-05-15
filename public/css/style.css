@@ -97,6 +97,23 @@ div.panel {
     width: 80px;
 }
 
+form > input {
+    margin-bottom: 10px;
+    width: 400px;
+}
+.ng-touched.ng-valid {
+    border: 2px green solid;
+}
+
+.ng-touched.ng-invalid {
+    border: 2px red solid;
+}
+
+.error {
+    font-size: 20px;
+    color: red;
+}
+
 @media (max-width: 767px) {
     .navbar-brand h2 { /* Restaurant name */
         font-size: 4vw; /* 1vw = 1% of viewport width */

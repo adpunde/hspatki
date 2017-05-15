@@ -1,0 +1,33 @@
+<div id="main-content" class="container">
+    <fieldset>
+        <legend class="text-center text-primary">Add Transaction</legend>
+        <form name="regForm" novalidate>
+            <input type="text" name="tin" placeholder="TIN"
+                ng-model="ctrl.trans.tin" required
+                ng-length="12" ng-blur="ctrl.getDealerName();">
+                <span ng-if="ctrl.invalidTin" class="error">INVALID TIN!</span><br>
+            <input type="text" placeholder="Dealer Name"
+                ng-model="ctrl.trans.dealerName" disabled><br>
+            <input type="text" name="date" placeholder="Date"
+                ng-model="ctrl.trans.date" required><br>
+            <input type="text" name="type" placeholder="Type"
+                ng-model="ctrl.trans.type" required><br>
+            <input type="text" name="filePath" placeholder="File Path"
+                ng-model="ctrl.trans.filePath" required><br>
+            <button ng-disabled="regForm.$invalid"
+                ng-click="ctrl.submit();">Submit
+            </button>
+        </form>
+    </fieldset>
+
+    <div class="trans" ng-repeat="trans in ctrl.filtered">
+        <div class="row">
+            <div class="col-sm-1 col-md-1 well well-sm">{{$index+1}}</div>
+            <div class="col-sm-2 col-md-2 well well-sm">{{trans.tin}}</div>
+            <div class="col-sm-4 col-md-4 well well-sm">{{trans.dealerName}}</div>
+            <div class="col-sm-2 col-md-2 well well-sm">{{trans.date}}</div>
+            <div class="col-sm-2 col-md-2 well well-sm">{{trans.type}}</div>
+            <div class="col-sm-1 col-md-1 well well-sm">OPEN</div>
+        </div>
+</div>
+</div>
