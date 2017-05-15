@@ -1,21 +1,25 @@
 <div id="main-content" class="container">
-    <h1>Transactions</h1>
+    <h1 class="text-center text-primary">Transactions</h1>
 
-    <div id="searchTrans">
-        <input type="text" ng-model="ctrl.transName" ng-keyup="ctrl.search();">
-    </div>
-    <div>
-        <div class="row">
-            <div class="col-md-6">
-                <ol>
-                    <li class="well" ng-repeat="trans in ctrl.filtered">
-                        {{trans.tin}} {{trans.dealerName}}<br>
-                        {{trans.date}}<br>
-                        {{trans.type}}<br>
-                        {{trans.filePath}}<br>
-                    </li>
-                </ol>
-            </div>
+    <div id="searchbox" class="row">
+        <div class="col-sm-8 col-md-8">
+            Search
+            <input type="text" placeholder="Dealer name" ng-model="ctrl.transName"
+                ng-keyup="ctrl.search();">
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <button id="addTrans" class="bg-primary pull-right" id="addTrans">ADD</button>
         </div>
     </div>
+
+    <div class="trans" ng-repeat="trans in ctrl.filtered">
+        <div class="row">
+            <div class="col-sm-1 col-md-1 well well-sm">{{$index+1}}</div>
+            <div class="col-sm-2 col-md-2 well well-sm">{{trans.tin}}</div>
+            <div class="col-sm-4 col-md-4 well well-sm">{{trans.dealerName}}</div>
+            <div class="col-sm-2 col-md-2 well well-sm">{{trans.date}}</div>
+            <div class="col-sm-2 col-md-2 well well-sm">{{trans.type}}</div>
+            <div class="col-sm-1 col-md-1 well well-sm">OPEN</div>
+        </div>
+</div>
 </div>

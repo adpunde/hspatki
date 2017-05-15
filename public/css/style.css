@@ -41,10 +41,21 @@
     /*border: 2px solid #3F0C1F;*/
     margin-bottom: 0;
     background: url('../images/jumbotron.jpg');
-    height: 700px;
+    height: 600px;
     opacity: 0.5;
 }
 
+#main-content {
+    min-height: 600px;
+}
+#main-content > h1 {
+    font-size: 20px;
+}
+
+div.panel {
+    margin-bottom: 10px !important;
+    border: 0;
+}
 .panel-heading a {
     color: black;
 }
@@ -66,7 +77,24 @@
     margin-bottom: 0;
 }
 .panel-body {
-    margin-left: 20px;
+    margin-left: 10px;
+}
+
+#searchbox {
+    margin: 20px 20px 20px 20px;
+}
+#searchbox > input {
+    width: 400px;
+}
+
+.trans {
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+#addTrans {
+    border-radius: 10px;
+    width: 80px;
 }
 
 @media (max-width: 767px) {
