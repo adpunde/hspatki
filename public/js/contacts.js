@@ -1,4 +1,5 @@
-var contactObj = {
+var contactObj = {};
+var contactsArray = {
     "contacts": [
         {
             "tin": "27570077768V",
@@ -100,17 +101,6 @@ var contactObj = {
             "email2": "N.A"
         },
         {
-            "tin": "27890037143V",
-            "dealerName": "Aspentech India Private Limited",
-            "personName": "Mr.Hemant Bachal",
-            "landline1": "66782523",
-            "landline2": "N.A",
-            "mobile1": "9822095490",
-            "mobile2": "N.A",
-            "email1": "hemant.bachal@aspentech.com",
-            "email2": "N.A"
-        },
-        {
             "tin": "27950542189V",
             "dealerName": "Aurangabad Distillery Pvt Ltd",
             "personName": "Mr.Hemade",
@@ -141,17 +131,6 @@ var contactObj = {
             "mobile1": "9850065347",
             "mobile2": "N.A",
             "email1": "Dhanashree_Deshmane@bmc.com",
-            "email2": "N.A"
-        },
-        {
-            "tin": "27520130418V",
-            "dealerName": "B M C Software India Private Limited",
-            "personName": "Mr.Manish Khot",
-            "landline1": "39875021",
-            "landline2": "39875298",
-            "mobile1": "9820640210",
-            "mobile2": "N.A",
-            "email1": "N.A",
             "email2": "N.A"
         },
         {
@@ -210,17 +189,6 @@ var contactObj = {
             "email2": "N.A"
         },
         {
-            "tin": "27240020380V",
-            "dealerName": "Bhide Plastic Industries",
-            "personName": "Ms.Bhide",
-            "landline1": "N.A",
-            "landline2": "32510295",
-            "mobile1": "9850039339",
-            "mobile2": "N.A",
-            "email1": "mbhide@iqara.net",
-            "email2": "N.A"
-        },
-        {
             "tin": "27600724402V",
             "dealerName": "Bofo Solutions Private Ltd",
             "personName": "Ms.Ulla",
@@ -238,17 +206,6 @@ var contactObj = {
             "landline1": "27120934",
             "landline2": "N.A",
             "mobile1": "9890934342",
-            "mobile2": "N.A",
-            "email1": "carbtools@gmail.com",
-            "email2": "N.A"
-        },
-        {
-            "tin": "27470002648V",
-            "dealerName": "Carbtools (India) Pvt.Ltd",
-            "personName": "Mr.P.L.Gaikwad",
-            "landline1": "27121180",
-            "landline2": "N.A",
-            "mobile1": "9822320134",
             "mobile2": "N.A",
             "email1": "carbtools@gmail.com",
             "email2": "N.A"
@@ -289,17 +246,6 @@ var contactObj = {
         {
             "tin": "27290004008V",
             "dealerName": "Cogent Engineers Pvt Ltd ",
-            "personName": "Mr.Tandale",
-            "landline1": "26633221/907",
-            "landline2": "02137-252413/52416",
-            "mobile1": "9881067262",
-            "mobile2": "N.A",
-            "email1": "tumesh2005@gmail.com",
-            "email2": "cogentaccount@gmail.com"
-        },
-        {
-            "tin": "27290004008V",
-            "dealerName": "Cogent Engineers Pvt Ltd ",
             "personName": "Mr.Ajay",
             "landline1": "24029387",
             "landline2": "N.A",
@@ -318,17 +264,6 @@ var contactObj = {
             "mobile2": "N.A",
             "email1": "ngy@dai-ichiindia.com",
             "email2": "agr@dai-ichiindia.com"
-        },
-        {
-            "tin": "27020017397V",
-            "dealerName": "Deccan Cables Private Limited",
-            "personName": "Mr.Shetty",
-            "landline1": "24222340/1948",
-            "landline2": "N.A",
-            "mobile1": "9371086624",
-            "mobile2": "N.A",
-            "email1": "deccancables@yahoo.co.in",
-            "email2": "deccancables@rediffmail.com"
         },
         {
             "tin": "27020017397V",
@@ -2069,4 +2004,11 @@ var contactObj = {
             "email2": ""
         }
     ]
+};
+
+for (var i = 0; i < contactsArray.contacts.length; i++) {
+    var contact = contactsArray.contacts[i];
+    if (contact.tin !== '-') {
+        contactObj[contact.tin] = contact;
+    }
 }

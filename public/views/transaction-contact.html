@@ -1,0 +1,13 @@
+<div id="main-content" class="container">
+    <h1 class="text-center text-primary">Transaction Details (TIN: {{ctrl.tin}})</h1>
+
+    <div class="trans" ng-repeat="trans in ctrl.filtered">
+        <div class="row">
+            <div class="col-sm-1 col-md-1 well well-sm">{{$index+1}}</div>
+            <div class="col-sm-2 col-md-2 well well-sm">{{trans.tin}}</div>
+            <div class="col-sm-4 col-md-4 well well-sm">{{trans.dealerName}}</div>
+            <div class="col-sm-2 col-md-2 well well-sm">{{trans.date}}</div>
+            <div class="col-sm-2 col-md-2 well well-sm">{{trans.type}}</div>
+        </div>
+    </div>
+</div>

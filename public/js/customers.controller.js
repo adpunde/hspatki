@@ -6,7 +6,7 @@ angular.module('hsp')
 
 function CustomersController () {
     var $ctrl = this;
-    $ctrl.customers = contactObj.contacts;
+    $ctrl.customers = contactObj;
     //console.log($ctrl.customers);
 };
 

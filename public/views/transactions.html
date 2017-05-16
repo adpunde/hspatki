@@ -17,10 +17,14 @@
         <div class="row">
             <div class="col-sm-1 col-md-1 well well-sm">{{$index+1}}</div>
             <div class="col-sm-2 col-md-2 well well-sm">{{trans.tin}}</div>
-            <div class="col-sm-4 col-md-4 well well-sm">{{trans.dealerName}}</div>
+            <div class="col-sm-4 col-md-4 well well-sm">
+                <a ui-sref="transaction-contact({tin: trans.tin})">
+                    {{trans.dealerName}}
+                </a>
+            </div>
             <div class="col-sm-2 col-md-2 well well-sm">{{trans.date}}</div>
             <div class="col-sm-2 col-md-2 well well-sm">{{trans.type}}</div>
             <div class="col-sm-1 col-md-1 well well-sm">OPEN</div>
         </div>
-</div>
+    </div>
 </div>

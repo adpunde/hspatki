@@ -29,6 +29,20 @@ function config ($urlRouterProvider, $stateProvider) {
         templateUrl: 'views/transaction-add.html',
         controller: 'TransactionAddController',
         controllerAs: 'ctrl'
+    })
+    .state('transaction-contact', {
+        url: '/transactions/{tin}',
+        templateUrl: 'views/transaction-contact.html',
+        controller: 'TransactionContactController',
+        controllerAs: 'ctrl',
+        resolve: {
+            tin: [ '$stateParams', function ($stateParams) {
+                console.log('TransactionContactController', $stateParams.tin);
+                if (contactObj[$stateParams.tin])
+                    return $stateParams.tin;
+                return null;
+            }]
+        }
     });
 }
 
