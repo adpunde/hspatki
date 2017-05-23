@@ -41,29 +41,11 @@
                             </a>
                         </li>
 						<li id="navAdminButton" ui-sref-active="active">
-                            <a href="#" ui-sref="admin">
+                            <a href="#" ui-sref="adminLogin">
                                 <span class="glyphicon glyphicon-lock"></span>
                                 Admin
                             </a>
                         </li>
-                        <!-- <li id="navCustomersButton" ui-sref-active="active">
-                            <a href="#" ui-sref="customers">
-                                <span class="glyphicon glyphicon-user"></span>
-                                Customers
-                            </a>
-                        </li>
-                        <li id="navTransactionsButton" ui-sref-active="active">
-                            <a href="#" ui-sref="transactions">
-                                <span class="glyphicon glyphicon-file"></span>
-                                Transactions
-                            </a>
-                        </li>
-                        <li id="navContactButton">
-                            <a href="#">
-                                <span class="glyphicon glyphicon-info-sign"></span>
-                                Contact
-                            </a>
-                        </li> -->
                     </ul>
                 </div>
 
@@ -107,15 +89,18 @@
     <script src="lib/bootstrap.js"></script>
     <script src="lib/angular.js"></script>
     <script src="lib/angular-ui-router.js"></script>
+	<script src="lib/FileSaver.js"></script>
 
     <script src="src/app.js"></script>
 
-	<script src="src/admin/admin.controller.js"></script>
+	<script src="src/admin/adminLogin.controller.js"></script>
+	<script src="src/admin/adminInfo.controller.js"></script>
 
 	<script src="src/customers/customerLogin.controller.js"></script>
 	<script src="src/customers/customerInfo.controller.js"></script>
 
 	<script src="src/services/customers.service.js"></script>
+	<script src="src/services/admin.service.js"></script>
 
 </body>
 </html>

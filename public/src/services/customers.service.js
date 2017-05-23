@@ -31,7 +31,6 @@ function CustomerService ($http) {
                 return null;
             });
     };
-
 };
 
 })();

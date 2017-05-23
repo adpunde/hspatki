@@ -34,5 +34,12 @@ module.exports = {
             console.log('Error writing file ' + fileName + ': ', error);
             return done(error);
         }
+    },
+    get: function (done) {
+        var data = Object.assign({}, map);
+        done(null, data);
+    },
+    getFileName: function () {
+        return fileName;
     }
 };

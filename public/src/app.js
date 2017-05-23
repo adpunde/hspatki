@@ -32,11 +32,16 @@ function config ($urlRouterProvider, $stateProvider) {
             }]
         }
     })
-    .state('admin', {
+    .state('adminLogin', {
         url: '/admin',
-        templateUrl: 'src/admin/admin.view.html',
-        controller: 'AdminController',
+        templateUrl: 'src/admin/adminLogin.view.html',
+        controller: 'AdminLoginController',
         controllerAs: 'adminCtrl'
+    })
+    .state('adminInfo', {
+        templateUrl: 'src/admin/adminInfo.view.html',
+        controller: 'AdminInfoController',
+        controllerAs: 'ctrl'
     });
     // .state('transactions', {
     //     url: '/transactions',

@@ -1,28 +1,29 @@
 {
-    "name": "hspatki",
-    "version": "1.0.0",
-    "description": "A software for a sales tax consultant firm",
-    "main": "server.js",
-    "scripts": {
-        "start": "node app/server.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/adpunde/hspatki.git"
-    },
-    "keywords" : [
-        "heroku",
-        "node",
-        "express"
-    ],
-    "dependencies": {
-        "async": "^2.4.0",
-        "body-parser": "^1.17.1",
-        "express": "^4.15.2",
-        "method-override": "^2.3.8",
-        "mongoose": "^4.9.8"
-    },
-    "engines": {
-        "node": "6.10.0"
-    }
+  "name": "hspatki",
+  "version": "1.0.0",
+  "description": "A software for a sales tax consultant firm",
+  "main": "server.js",
+  "scripts": {
+    "start": "node app/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adpunde/hspatki.git"
+  },
+  "keywords": [
+    "heroku",
+    "node",
+    "express"
+  ],
+  "dependencies": {
+    "async": "^2.4.0",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "file-saver": "^1.3.3",
+    "method-override": "^2.3.8",
+    "mongoose": "^4.9.8"
+  },
+  "engines": {
+    "node": "6.10.0"
+  }
 }
