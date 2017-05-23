@@ -3,25 +3,14 @@ var map = require('./contacts');
 var contactMap = map.contacts;
 var updatedContactMap = Object.assign({}, contactMap);
 var updatedFileName = './newContacts.json';
+var init = false;
 
-exports.find = function (tin, next) {
-    if (tin && contactMap[tin]) {
-        next(null, contactMap[tin]);
-    } else {
-        next(new Error('TIN not found'));
-    }
-};
+module.exports = {
+    findCustomerInfo: function (db, tin, done) {
+        db.find(tin, done);
+    },
 
-exports.update = function (info, next) {
-    var tin = info.tin;
-
-    updatedContactMap[tin] = info;
-    try {
-        fs.writeFileSync(updatedFileName,
-            JSON.stringify(updatedContactMap, null, 4));
-        return next(null, tin);
-    } catch (error) {
-        console.log('Error writing file ' + updatedFileName + ':', error);
-        return next(error);
+    updateCustomerInfo: function (info, done) {
+        db.update(info.tin, info, done);
     }
 };
