@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="navbar-header">
                     <div class="navbar-brand">
-                        <a href="index.html"><h2>H. S. Patki &amp; Associates</h2></a>
+                        <a href="#" ui-sref="home"><h2>H. S. Patki &amp; Associates</h2></a>
                     </div>
 
                     <button id="navbarToggle" type="button" class="navbar-toggle collapsed"
@@ -29,12 +29,24 @@
                 <div id="collapsable-nav" class="collapse navbar-collapse">
                     <ul id="nav-list" class="nav navbar-nav navbar-right">
                         <li id="navHomeButton" class="visible-xs">
-                            <a href="index.html">
+                            <a href="#" ui-sref="home">
                                 <span class="glyphicon glyphicon-home"></span>
                                 Home
                             </a>
                         </li>
-                        <li id="navCustomersButton" ui-sref-active="active">
+						<li id="navCustomersButton" ui-sref-active="active">
+                            <a href="#" ui-sref="customerLogin">
+                                <span class="glyphicon glyphicon-user"></span>
+                                Customers
+                            </a>
+                        </li>
+						<li id="navAdminButton" ui-sref-active="active">
+                            <a href="#" ui-sref="admin">
+                                <span class="glyphicon glyphicon-lock"></span>
+                                Admin
+                            </a>
+                        </li>
+                        <!-- <li id="navCustomersButton" ui-sref-active="active">
                             <a href="#" ui-sref="customers">
                                 <span class="glyphicon glyphicon-user"></span>
                                 Customers
@@ -51,7 +63,7 @@
                                 <span class="glyphicon glyphicon-info-sign"></span>
                                 Contact
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
 
@@ -96,18 +108,14 @@
     <script src="lib/angular.js"></script>
     <script src="lib/angular-ui-router.js"></script>
 
-    <script src="js/hsp.module.js"></script>
-	<script src="js/hsp.routes.js"></script>
+    <script src="src/app.js"></script>
 
-	<script src="js/contacts.js"></script>
-	<script src="js/transactions.js"></script>
+	<script src="src/admin/admin.controller.js"></script>
 
-	<script src="js/customers.controller.js"></script>
-	<script src="js/customers.component.js"></script>
+	<script src="src/customers/customerLogin.controller.js"></script>
+	<script src="src/customers/customerInfo.controller.js"></script>
 
-	<script src="js/transactions.controller.js"></script>
-	<script src="js/transaction-add.controller.js"></script>
-	<script src="js/transaction-contact.controller.js"></script>
+	<script src="src/services/customers.service.js"></script>
 
 </body>
 </html>

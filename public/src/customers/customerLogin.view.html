@@ -1,0 +1,30 @@
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
+            <div class="customerBox">
+                <!-- <h2>Admin</h2> -->
+                <form name="TinForm">
+                    <div class="form-group text-center">
+                        <label for="tin">Please enter your TIN</label>
+                        <input type="text" id="tin" class="form-control"
+                            ng-model="ctrl.tin" pattern="([A-Za-z0-9]{12})"
+                            required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary"
+                            ng-click="ctrl.Submit();" ng-disabled="TinForm.$invalid">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="panel-group" id="accordion">
+        <customers ng-repeat="customer in ctrl.customers"
+            customer="customer" index="$index">
+        </customers>
+    </div> -->
+
+</div>

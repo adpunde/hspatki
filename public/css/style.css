@@ -36,18 +36,6 @@
     margin-bottom: 30px;
 }
 
-.jumbotron {
-    box-shadow: 0 0 50px #3F0C1F;
-    /*border: 2px solid #3F0C1F;*/
-    margin-bottom: 0;
-    background: url('../images/jumbotron.jpg');
-    height: 600px;
-    opacity: 0.5;
-}
-
-#main-content {
-    min-height: 600px;
-}
 #main-content > h1 {
     font-size: 20px;
 }
@@ -114,7 +102,86 @@ form > input {
     color: red;
 }
 
+/*adminBox*/
+.adminBox, .customerBox {
+    margin-top: 100px;
+}
+
+.customerInfoBox {
+    margin-bottom: 20px;
+}
+.customerInfoBox > h4 {
+    text-decoration: underline;
+    font-style: italic;
+    margin: 40px;
+}
+.customerInfoBox form {
+    margin-top: 20px;
+}
+.customerInfoBox label {
+    width: 20%;
+    float: left;
+}
+.customerInfoBox input,  .customerInfoBox textarea {
+    width: 60%;
+    margin: auto;
+}
+.customerInfoBox input.ng-invalid {
+    border: 1px solid red;
+}
+.customerInfoBox input.ng-valid {
+    border: 1px solid green;
+}
+
+@media (min-width: 1200px) {
+    .jumbotron {
+        box-shadow: 0 0 50px #3F0C1F;
+        /*border: 2px solid #3F0C1F;*/
+        margin-bottom: 0;
+        background: url('../images/jumbotron_lg.jpg');
+        height: 1024px;
+        opacity: 0.5;
+    }
+
+    #main-content {
+        min-height: 1024px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .jumbotron {
+        box-shadow: 0 0 50px #3F0C1F;
+        margin-bottom: 0;
+        background: url('../images/jumbotron_md.jpg');
+        height: 900px;
+        opacity: 0.5;
+    }
+    #main-content {
+        min-height: 900px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .jumbotron {
+        box-shadow: 0 0 50px #3F0C1F;
+        margin-bottom: 0;
+        background: url('../images/jumbotron_sm.jpg');
+        height: 666px;
+        opacity: 0.5;
+    }
+    #main-content {
+        min-height: 666px;
+    }
+}
+
 @media (max-width: 767px) {
+    .jumbotron {
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        opacity: 0.5;
+    }
+
     .navbar-brand h2 { /* Restaurant name */
         font-size: 4vw; /* 1vw = 1% of viewport width */
     }
@@ -162,12 +229,6 @@ form > input {
     }
     .panel-footer section hr {
         width: 50%;
-    }
-
-    /*Add container for specificity*/
-    .container .jumbotron {
-        margin-top: 30px;
-        padding: 0;
     }
 
     #menu-tile, #specials-tile {

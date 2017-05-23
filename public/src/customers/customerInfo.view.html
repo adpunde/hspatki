@@ -1,0 +1,83 @@
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+            <div class="customerInfoBox">
+                <h4 class="text-center">Please fill in the details</h4>
+                <form name="InfoForm">
+                    <div class="form-group">
+                        <label for="tin">TIN</label>
+                        <input type="text" id="tin" class="form-control"
+                            ng-model="ctrl.info.tin" ng-disabled="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="dealerName">Dealer Name</label>
+                        <input type="text" id="dealerName" class="form-control"
+                            ng-model="ctrl.info.dealerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pan">PAN</label>
+                        <input type="text" id="pan" class="form-control"
+                            ng-model="ctrl.info.pan" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gstin">GSTIN</label>
+                        <input type="text" id="gstin" class="form-control"
+                            ng-model="ctrl.info.gstin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="arn">ARN</label>
+                        <input type="text" id="arn" class="form-control"
+                            ng-model="ctrl.info.arn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="personName">Person Name</label>
+                        <input type="text" id="personName" class="form-control"
+                            ng-model="ctrl.info.personName">
+                    </div>
+                    <div class="form-group">
+                        <label for="landline1">Landline 1</label>
+                        <input type="text" id="landline1" class="form-control"
+                            ng-model="ctrl.info.landline1">
+                    </div>
+                    <div class="form-group">
+                        <label for="landline2">Landline 2</label>
+                        <input type="text" id="landline2" class="form-control"
+                            ng-model="ctrl.info.landline2">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile1">Mobile 1</label>
+                        <input type="text" id="mobile1" class="form-control"
+                            ng-model="ctrl.info.mobile1">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile2">Mobile 2</label>
+                        <input type="text" id="mobile2" class="form-control"
+                            ng-model="ctrl.info.mobile2">
+                    </div>
+                    <div class="form-group">
+                        <label for="email1">Email 1</label>
+                        <input type="text" id="email1" class="form-control"
+                            ng-model="ctrl.info.email1">
+                    </div>
+                    <div class="form-group">
+                        <label for="email2">Email2</label>
+                        <input type="text" id="email2" class="form-control"
+                            ng-model="ctrl.info.email2">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" class="form-control"
+                            ng-model="ctrl.info.address">
+                        </textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary"
+                            ng-click="ctrl.Update();" ng-disabled="InfoForm.$invalid">
+                            Update
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
