@@ -1,4 +1,4 @@
-exports.contacts = {
+module.exports = {
     "27570077768V": {
         "tin": "27570077768V",
         "dealerName": "Abhinav Caterers Private Limited",
@@ -1385,15 +1385,4 @@ exports.contacts = {
         "email1": "malvika.shell@gmail.com",
         "email2": "N.A"
     },
-    "-": {
-        "tin": "-",
-        "dealerName": "Thermax Ltd",
-        "personName": "",
-        "landline1": "",
-        "landline2": "",
-        "mobile1": "",
-        "mobile2": "",
-        "email1": "",
-        "email2": ""
-    }
-}
+};

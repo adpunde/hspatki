@@ -4,9 +4,13 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var async = require('async');
 var path = require('path');
+var http = require('http');
 
 var routes = require('./routes');
-var db = require('./data/dbFile');
+var customerDB = require('./customerDB');
+var adminDB = require('./adminDB');
+var contacts = require('./data/contacts.js');
+
 var app;
 var server;
 
@@ -14,15 +18,16 @@ var conf = {
     port: 4000,
     hostip: '10.0.0.100',
     dbfile: path.resolve(__dirname + '/data/contacts.json'),
-    staticDir: 'public'
+    staticDir: 'public',
+    mongodbUrl: 'mongodb://hspatki:hspatki@ds151451.mlab.com:51451/hspatki'
 };
 
 async.series([
     function (next) {
         // Initialize database
-        db.init(conf.dbfile, function (err) {
+        customerDB.init(conf, function (err) {
             if (err) {
-                console.log('Error opening file: ' + conf.dbFile);
+                console.log(err.message);
                 return next(err);
             }
             next();
@@ -40,12 +45,13 @@ async.series([
     },
     function (next) {
         // routes
-        routes.setRoutes(app, db);
+        routes.setRoutes(app, customerDB, adminDB);
         next();
     },
     function (next) {
         var serverStatus = function () {
             console.log('Server running: ', server.address());
+            next();
         };
 
         // start the server
@@ -55,7 +61,20 @@ async.series([
             server = app.listen(conf.port, conf.hostip, serverStatus);
 
         // TODO Error handling
-        next();
+    },
+    function (next) {
+        // Load initial contacts to database
+        async.forEachOfSeries(contacts, function (value, key, done) {
+            customerDB.add(key, value, function (err, data) {
+                // if (err)
+                //     console.log('Error adding ' + key + ': ' + err.message);
+                // else
+                //     console.log('Added successfully ' + key);
+                done();
+            }, function (err) {
+                next();
+            });
+        });
     }
 ], function (err) {
     if (err) {
@@ -67,7 +86,7 @@ async.series([
     process.on('SIGINT', function () {
         console.log('Stopping the server');
         server.close();
-        db.disconnect();
+        customerDB.disconnect();
         process.exit();
     });
 });
