@@ -55,8 +55,8 @@ async.series([
         };
 
         // start the server
-        if (process.env.port)
-            server = app.listen(process.env.port, serverStatus);
+        if (process.env.PORT)
+            server = app.listen(process.env.PORT, serverStatus);
         else
             server = app.listen(conf.port, conf.hostip, serverStatus);
 
