@@ -2,7 +2,8 @@
 'use strict';
 
 angular.module('hsp', ['ui.router'])
-.config(config);
+.config(config)
+.constant('AdminLoginTimeout', (5 * 60 * 1000));
 
 config.$inject = ['$urlRouterProvider', '$stateProvider'];
 function config ($urlRouterProvider, $stateProvider) {
@@ -42,32 +43,12 @@ function config ($urlRouterProvider, $stateProvider) {
         templateUrl: 'src/admin/adminInfo.view.html',
         controller: 'AdminInfoController',
         controllerAs: 'ctrl'
+    })
+    .state('adminNewCustomer', {
+        templateUrl: 'src/admin/adminNewCustomer.view.html',
+        controller: 'AdminNewCustomerController',
+        controllerAs: 'ctrl'
     });
-    // .state('transactions', {
-    //     url: '/transactions',
-    //     templateUrl: 'views/transactions.html',
-    //     controller: 'TransactionsController',
-    //     controllerAs: 'ctrl'
-    // })
-    // .state('transaction-add', {
-    //     templateUrl: 'views/transaction-add.html',
-    //     controller: 'TransactionAddController',
-    //     controllerAs: 'ctrl'
-    // })
-    // .state('transaction-contact', {
-    //     url: '/transactions/{tin}',
-    //     templateUrl: 'views/transaction-contact.html',
-    //     controller: 'TransactionContactController',
-    //     controllerAs: 'ctrl',
-    //     resolve: {
-    //         tin: [ '$stateParams', function ($stateParams) {
-    //             console.log('TransactionContactController', $stateParams.tin);
-    //             if (contactObj[$stateParams.tin])
-    //                 return $stateParams.tin;
-    //             return null;
-    //         }]
-    //     }
-    // });
 }
 
 })();

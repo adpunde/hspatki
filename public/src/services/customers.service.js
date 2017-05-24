@@ -15,8 +15,20 @@ function CustomerService ($http) {
                 return response.data;
             })
             .catch (function (response) {
-                console.log('Error', response);
-                return null;
+                console.log('Error', response.data);
+                throw new Error(response.data);
+            });
+    };
+
+    service.addCustomerInfo = function (info) {
+        return $http.post('/api/customers/add',
+            JSON.stringify(info), {'Content-type': 'application/json'})
+            .then (function (response) {
+                return response.data;
+            })
+            .catch (function (response) {
+                console.log('Error', response.data);
+                throw new Error(response.data);
             });
     };
 
@@ -27,8 +39,8 @@ function CustomerService ($http) {
                 return response.data;
             })
             .catch (function (response) {
-                console.log('Error', response);
-                return null;
+                console.log('Error', response.data);
+                throw new Error(response.data);
             });
     };
 };

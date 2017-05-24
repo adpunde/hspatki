@@ -1,0 +1,42 @@
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+            <div class="customerInfoBox">
+                <h4 class="text-center">Please fill in the details</h4>
+                <form name="InfoForm">
+                    <div class="form-group">
+                        <label for="tin">TIN</label>
+                        <input type="text" id="tin" class="form-control"
+                            ng-model="ctrl.info.tin">
+                    </div>
+                    <div class="form-group">
+                        <label for="dealerName">Dealer Name</label>
+                        <input type="text" id="dealerName" class="form-control"
+                            ng-model="ctrl.info.dealerName">
+                    </div>
+                    <div class="form-group">
+                        <label for="pan">PAN</label>
+                        <input type="text" id="pan" class="form-control"
+                            ng-model="ctrl.info.pan">
+                    </div>
+                    <div class="form-group">
+                        <label for="gstin">GSTIN</label>
+                        <input type="text" id="gstin" class="form-control"
+                            ng-model="ctrl.info.gstin">
+                    </div>
+                    <div class="form-group">
+                        <label for="arn">ARN</label>
+                        <input type="text" id="arn" class="form-control"
+                            ng-model="ctrl.info.arn">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary"
+                            ng-click="ctrl.Submit();" ng-disabled="InfoForm.$invalid">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,10 +13,11 @@ function CustomerInfoController (info, CustomerService, $state) {
         // Make POST request and update customer data
         CustomerService.updateCustomerInfo(ctrl.info)
         .then (function (tin) {
-            if (!tin)
-                alert('Error updating database');
-            else
-                alert('Data uploaded successfully !');
+            alert('Data uploaded successfully !');
+            $state.go('customerLogin');
+        })
+        .catch (function (error) {
+            alert('Error updating database: ' + error.message);
             $state.go('customerLogin');
         });
     };

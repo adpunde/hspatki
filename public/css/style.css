@@ -134,7 +134,8 @@ form > input {
 }
 
 .adminInfoBox {
-    margin-top: 50px;
+    margin: 40px;
+    text-align: center;
 }
 
 @media (min-width: 1200px) {

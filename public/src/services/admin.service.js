@@ -17,8 +17,8 @@ function AdminService ($http) {
             return response.data;
         })
         .catch (function (response) {
-            console.log('Error', response);
-            return null;
+            console.log('Error', response.data);
+            throw new Error(response.data);
         });
     };
 
@@ -29,15 +29,14 @@ function AdminService ($http) {
                 var json = JSON.stringify(data, null, 4);
                 var blob = new Blob([json], { type: 'application/json' });
                 saveAs(blob, "contacts.json");
-                return true;
                 // var header = response.headers('content-disposition');
                 // var parts = header.match(new RegExp(".*filename=\"(.*)\""));
                 // console.log(header);
                 // console.log('FileName: ', fileName);
             })
             .catch (function (response) {
-                console.log('Error', response);
-                return null;
+                console.log('Error', response.data);
+                throw new Error(response.data);
             });
     };
 };

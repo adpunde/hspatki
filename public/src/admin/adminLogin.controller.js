@@ -14,13 +14,11 @@ function AdminLoginController (AdminService, $state) {
         // Send POST request to the server
         AdminService.Login(ctrl.username, ctrl.password)
         .then (function (name) {
-            if (!name) {
-                alert('Invalid credentials');
-                $state.go('adminLogin');
-            }
-            else {
-                $state.go('adminInfo');
-            }
+            $state.go('adminInfo');
+        })
+        .catch (function (error) {
+            alert('Invalid credentials');
+            $state.go('adminLogin');
         });
     }
 };

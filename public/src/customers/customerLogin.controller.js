@@ -13,8 +13,11 @@ function CustomerLoginController (CustomerService, $state) {
         // Make GET request and retrieve customer data
         CustomerService.getCustomerInfo(ctrl.tin)
         .then (function (info) {
-            //CustomerService.setInfo(ctrl.tin, info);
             $state.go('customerInfo', {"info": info});
+        })
+        .catch (function (error) {
+            alert('Error: ' + error.message);
+            $state.go('customerLogin');
         });
     };
 };
