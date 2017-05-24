@@ -4,12 +4,12 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var async = require('async');
 var path = require('path');
-var http = require('http');
 
 var routes = require('./routes');
 var customerDB = require('./customerDB');
 var adminDB = require('./adminDB');
 var contacts = require('./data/contacts.js');
+var favicon = require('express-favicon');
 
 var app;
 var server;
@@ -41,6 +41,7 @@ async.series([
         app.use(bodyParser.urlencoded({ extended: true }));
         // serve static files
         app.use(express.static(conf.staticDir));
+        app.use(favicon('favicon.ico'));
         next();
     },
     function (next) {
