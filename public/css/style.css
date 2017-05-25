@@ -119,10 +119,19 @@ form > input {
     margin-bottom: 20px;
 }
 .customerInfoBox > h3 {
-    text-decoration: underline;
-    font-style: italic;
     margin: 40px;
 }
+.customerInfoBox p {
+    font-style: italic;
+    margin-bottom: 40px;
+}
+.customerInfoBox h4, .customerInfoBox p {
+    text-align: center;
+}
+.customerInfoBox hr {
+    border-color: #AAA;
+}
+
 .customerInfoBox form {
     margin-top: 20px;
 }
