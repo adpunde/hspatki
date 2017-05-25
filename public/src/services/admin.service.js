@@ -25,10 +25,15 @@ function AdminService ($http) {
     service.getAllCustomerInfo = function () {
         return $http.get('/api/admin/download')
             .then (function (response) {
-                var data = response.data;
-                var json = JSON.stringify(data, null, 4);
-                var blob = new Blob([json], { type: 'application/json' });
-                saveAs(blob, "contacts.json");
+                var array = response.data;
+                var str = '';
+
+                for (var i = 0; i < array.length; i++) {
+                    str += array[i].tin + ',' + array[i].dealerName + "\n";
+                }
+                var blob = new Blob([str], { type: 'text/csv' });
+                saveAs(blob, "contacts.csv");
+
                 // var header = response.headers('content-disposition');
                 // var parts = header.match(new RegExp(".*filename=\"(.*)\""));
                 // console.log(header);

@@ -1,7 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var mongoose = require('mongoose');
 var async = require('async');
 var path = require('path');
 var http = require('http');
@@ -19,7 +18,8 @@ var conf = {
     hostip: '10.0.0.100',
     dbfile: path.resolve(__dirname + '/data/contacts.json'),
     staticDir: 'public',
-    mongodbUrl: 'mongodb://hspatki:hspatki@ds151451.mlab.com:51451/hspatki'
+    //mongodbUrl: 'mongodb://hspatki:hspatki@ds151451.mlab.com:51451/hspatki'
+    mongodbUrl: 'mongodb://localhost:27017/hspatki'
 };
 
 async.series([
@@ -30,6 +30,10 @@ async.series([
                 console.log(err.message);
                 return next(err);
             }
+            // customerDB.clean(function (err) {
+            //     if (err)
+            //         console.log(err.message);
+            // });
             next();
         });
     },
@@ -65,11 +69,11 @@ async.series([
     function (next) {
         // Load initial contacts to database
         async.forEachOfSeries(contacts, function (value, key, done) {
-            customerDB.add(key, value, function (err, data) {
-                // if (err)
-                //     console.log('Error adding ' + key + ': ' + err.message);
-                // else
-                //     console.log('Added successfully ' + key);
+            customerDB.add(value, function (err, data) {
+                if (err)
+                    console.log('Error adding ' + key + ': ' + err.message);
+                else
+                    console.log('Added successfully ' + key);
                 done();
             }, function (err) {
                 next();

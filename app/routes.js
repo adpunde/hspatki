@@ -2,8 +2,7 @@ module.exports = {
     setRoutes: function (app, customerDB, adminDB) {
         app.get('/api/customers', function (req, res) {
             console.log('GET customer info');
-            var tin = req.query.tin;
-            customerDB.find(tin, function (err, data) {
+            customerDB.find(req.query.prop, req.query.value, function (err, data) {
                 if (err) {
                     return res.status(404).send(err.message);
                 }
@@ -14,7 +13,7 @@ module.exports = {
         app.post('/api/customers/add', function (req, res) {
             console.log('POST add customer info');
             var info = req.body;
-            customerDB.add(info.tin, info, function (err, data) {
+            customerDB.add(info, function (err, data) {
                 if (err) {
                     return res.status(404).send(err.message);
                 }
@@ -25,7 +24,7 @@ module.exports = {
         app.post('/api/customers/update', function (req, res) {
             console.log('POST update customer info');
             var info = req.body;
-            customerDB.update(info.tin, info, function (err, data) {
+            customerDB.update(info, function (err, data) {
                 if (err) {
                     return res.status(404).send(err.message);
                 }
@@ -47,14 +46,13 @@ module.exports = {
                 if (err)
                     return res.status(404).send(err.message);
 
-                var map = {};
+                var array = [];
                 for (var i = 0; i < data.length; i++) {
-                    var tin = data[i].tin;
-                    map[tin] = Object.assign(data[i], {});
+                    array.push(data[i]);
                 }
 
-                var str = JSON.stringify(map, null, 4);
-                res.setHeader('Content-disposition', 'attachment; filename=contacs.json');
+                var str = JSON.stringify(array, null, 4);
+                res.setHeader('Content-disposition', 'attachment; filename=contacts.json');
                 res.setHeader('Content-type', 'application/json');
                 res.end(str);
             });

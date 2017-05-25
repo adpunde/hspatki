@@ -36,7 +36,7 @@
     margin-bottom: 30px;
 }
 
-#main-content > h1 {
+/*#main-content > h1 {
     font-size: 20px;
 }
 
@@ -88,8 +88,8 @@ div.panel {
 form > input {
     margin-bottom: 10px;
     width: 400px;
-}
-.ng-touched.ng-valid {
+}*/
+/*.ng-touched.ng-valid {
     border: 2px green solid;
 }
 
@@ -100,6 +100,14 @@ form > input {
 .error {
     font-size: 20px;
     color: red;
+}*/
+
+#TinForm .row {
+    margin: 100px;
+}
+
+#TinForm .form-group {
+    margin: 10px;
 }
 
 /*adminBox*/
@@ -110,7 +118,7 @@ form > input {
 .customerInfoBox {
     margin-bottom: 20px;
 }
-.customerInfoBox > h4 {
+.customerInfoBox > h3 {
     text-decoration: underline;
     font-style: italic;
     margin: 40px;
@@ -126,10 +134,10 @@ form > input {
     width: 60%;
     margin: auto;
 }
-.customerInfoBox input.ng-invalid {
+.customerInfoBox input.ng-invalid, .customerInfoBox textarea.ng-invalid {
     border: 1px solid red;
 }
-.customerInfoBox input.ng-valid {
+.customerInfoBox input.ng-valid, .customerInfoBox textarea.ng-valid {
     border: 1px solid green;
 }
 

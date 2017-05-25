@@ -2,74 +2,86 @@
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
             <div class="customerInfoBox">
-                <h4 class="text-center">Please fill in the details</h4>
+                <h3 class="text-center">Please fill in the details</h3>
+
                 <form name="InfoForm">
+                    <h4>Supplier Details</h4>
+                    <!-- Identifiers -->
                     <div class="form-group">
                         <label for="tin">TIN</label>
                         <input type="text" id="tin" class="form-control"
-                            ng-model="ctrl.info.tin" ng-disabled="true">
-                    </div>
-                    <div class="form-group">
-                        <label for="dealerName">Dealer Name</label>
-                        <input type="text" id="dealerName" class="form-control"
-                            ng-model="ctrl.info.dealerName" required>
+                            ng-model="ctrl.info.tin" ng-disabled="ctrl.tinPresent();">
                     </div>
                     <div class="form-group">
                         <label for="pan">PAN</label>
                         <input type="text" id="pan" class="form-control"
-                            ng-model="ctrl.info.pan" required>
+                            ng-model="ctrl.info.pan" ng-disabled="ctrl.panPresent();">
                     </div>
+                    <div class="form-group">
+                        <label for="stn">Service Tax No.</label>
+                        <input type="text" id="stn" class="form-control"
+                            ng-model="ctrl.info.stn" ng-disabled="ctrl.stnPresent();">
+                    </div>
+
+                    <!-- GST identifiers -->
                     <div class="form-group">
                         <label for="gstin">GSTIN</label>
                         <input type="text" id="gstin" class="form-control"
-                            ng-model="ctrl.info.gstin" required>
+                            ng-model="ctrl.info.gstin">
                     </div>
                     <div class="form-group">
                         <label for="arn">ARN</label>
                         <input type="text" id="arn" class="form-control"
-                            ng-model="ctrl.info.arn" required>
+                            ng-model="ctrl.info.arn">
                     </div>
+
+                    <!-- Places -->
                     <div class="form-group">
-                        <label for="personName">Person Name</label>
-                        <input type="text" id="personName" class="form-control"
-                            ng-model="ctrl.info.personName">
-                    </div>
-                    <div class="form-group">
-                        <label for="landline1">Landline 1</label>
-                        <input type="text" id="landline1" class="form-control"
-                            ng-model="ctrl.info.landline1">
-                    </div>
-                    <div class="form-group">
-                        <label for="landline2">Landline 2</label>
-                        <input type="text" id="landline2" class="form-control"
-                            ng-model="ctrl.info.landline2">
-                    </div>
-                    <div class="form-group">
-                        <label for="mobile1">Mobile 1</label>
-                        <input type="text" id="mobile1" class="form-control"
-                            ng-model="ctrl.info.mobile1">
-                    </div>
-                    <div class="form-group">
-                        <label for="mobile2">Mobile 2</label>
-                        <input type="text" id="mobile2" class="form-control"
-                            ng-model="ctrl.info.mobile2">
-                    </div>
-                    <div class="form-group">
-                        <label for="email1">Email 1</label>
-                        <input type="text" id="email1" class="form-control"
-                            ng-model="ctrl.info.email1">
-                    </div>
-                    <div class="form-group">
-                        <label for="email2">Email2</label>
-                        <input type="text" id="email2" class="form-control"
-                            ng-model="ctrl.info.email2">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control"
+                            ng-model="ctrl.info.name" required>
                     </div>
                     <div class="form-group">
                         <label for="address">Address</label>
                         <textarea id="address" class="form-control"
-                            ng-model="ctrl.info.address">
+                            ng-model="ctrl.info.address" required>
                         </textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" class="form-control"
+                            ng-model="ctrl.info.state" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pincode">Pin Code</label>
+                        <input type="text" id="pincode" class="form-control"
+                            ng-model="ctrl.info.pincode" required>
+                    </div>
+
+                    <!-- Contact person -->
+                    <h4>Authorized Signatory</h4>
+                    <div class="form-group">
+                        <label for="personName">Name</label>
+                        <input type="text" id="personName" class="form-control"
+                            ng-model="ctrl.info.personName">
+                    </div>
+                    <div class="form-group">
+                        <label for="designation">Designation</label>
+                        <input type="text" id="designation" class="form-control"
+                            ng-model="ctrl.info.designation">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile</label>
+                        <input type="text" id="mobile" class="form-control"
+                            ng-model="ctrl.info.mobile">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" class="form-control"
+                            ng-model="ctrl.info.email">
+                    </div>
+
+                    <!-- Submit -->
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary"
                             ng-click="ctrl.Update();" ng-disabled="InfoForm.$invalid">

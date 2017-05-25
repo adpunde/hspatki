@@ -9,8 +9,8 @@ function CustomerService ($http) {
     var service = this;
     var info = {};
 
-    service.getCustomerInfo = function (tin) {
-        return $http.get('/api/customers', {params: {"tin": tin}})
+    service.getCustomerInfo = function (prop, value) {
+        return $http.get('/api/customers', {params: {"prop": prop, "value": value}})
             .then (function (response) {
                 return response.data;
             })
