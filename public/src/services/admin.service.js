@@ -26,12 +26,15 @@ function AdminService ($http) {
         return $http.get('/api/admin/download')
             .then (function (response) {
                 var array = response.data;
-                var str = '';
 
+                var blob = new Blob([array], { type: 'application/json' });
+                saveAs(blob, "contacts.json");
+
+                var str = '';
                 for (var i = 0; i < array.length; i++) {
                     str += array[i].tin + ',' + array[i].dealerName + "\n";
                 }
-                var blob = new Blob([str], { type: 'text/csv' });
+                blob = new Blob([str], { type: 'text/csv' });
                 saveAs(blob, "contacts.csv");
 
                 // var header = response.headers('content-disposition');

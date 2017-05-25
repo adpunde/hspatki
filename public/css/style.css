@@ -101,7 +101,12 @@ form > input {
     font-size: 20px;
     color: red;
 }*/
+/*adminBox*/
+.adminBox, .customerBox {
+    margin-top: 100px;
+}
 
+/*Customer Login Form*/
 #TinForm .row {
     margin: 100px;
 }
@@ -110,20 +115,19 @@ form > input {
     margin: 10px;
 }
 
-/*adminBox*/
-.adminBox, .customerBox {
-    margin-top: 100px;
-}
-
+/*Customer Info View*/
 .customerInfoBox {
     margin-bottom: 20px;
 }
-.customerInfoBox > h3 {
+.customerInfoBox h3 {
     margin: 40px;
+    text-decoration: underline;
 }
-.customerInfoBox p {
+.customerInfoBox #warning {
     font-style: italic;
-    margin-bottom: 40px;
+}
+.customerInfoBox h4 {
+    margin-top: 20px;
 }
 .customerInfoBox h4, .customerInfoBox p {
     text-align: center;
@@ -131,7 +135,6 @@ form > input {
 .customerInfoBox hr {
     border-color: #AAA;
 }
-
 .customerInfoBox form {
     margin-top: 20px;
 }
@@ -148,6 +151,22 @@ form > input {
 }
 .customerInfoBox input.ng-valid, .customerInfoBox textarea.ng-valid {
     border: 1px solid green;
+}
+.customerInfoBox #customerPlace,
+.customerInfoBox #customerGood,
+.customerInfoBox #customerService {
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.customerInfoBox #places,
+.customerInfoBox #goods,
+.customerInfoBox #services {
+    clear: both;
+}
+
+.customerInfoBox #places {
+    margin-bottom: 40px;
 }
 
 .adminInfoBox {

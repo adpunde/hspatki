@@ -7,7 +7,7 @@ angular.module('hsp')
 CustomerLoginController.$inject = ['CustomerService', '$state'];
 function CustomerLoginController (CustomerService, $state) {
     var ctrl = this;
-    ctrl.option = '';
+    ctrl.option = 'tin';
     ctrl.value = '';
 
     ctrl.Submit = function () {
