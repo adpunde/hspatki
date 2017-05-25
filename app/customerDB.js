@@ -61,7 +61,7 @@ module.exports = {
         if (!info.tin && !info.pan && !info.stn)
             return done(new Error('No TIN/PAN/STN specified'));
 
-        customers.findOne({"tin": tin}, function (err, result) {
+        customers.findOne({"tin": info.tin}, function (err, result) {
             if (err)
                 return done(err);
             if (!result)

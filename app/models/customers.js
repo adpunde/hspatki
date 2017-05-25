@@ -1,20 +1,40 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var placeSchema = new Schema({
+    name: { type: String },
+    address: { type: String },
+    state: { type: String },
+    pincode: { type: String }
+});
+
+var goodSchema = new Schema({
+    name: { type: String },
+    hsn: { type: String },
+});
+
+var serviceSchema = new Schema({
+    name: { type: String },
+    sac: { type: String },
+});
+
 var customerSchema = new Schema({
-    tin: { type: String, required: true, unique: true },
-    dealerName: { type: String },
+    tin: { type: String },
     pan: { type: String },
+    stn: { type: String },
     gstin: { type: String },
     arn: { type: String },
-    personName: { type: String },
-    landline1: { type: String },
-    landline2: { type: String },
-    mobile1: { type: String },
-    mobile2: { type: String },
-    email1: { type: String },
-    email2: { type: String },
+    name: { type: String },
     address: { type: String },
+    state: { type: String },
+    pincode: { type: String },
+    personName: { type: String },
+    designation: { type: String },
+    mobile: { type: String },
+    email: { type: String },
+    places: [placeSchema],
+    goods: [goodSchema],
+    services: [serviceSchema]
 }, {
     timestamps: true
 });
