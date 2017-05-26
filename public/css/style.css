@@ -107,13 +107,15 @@ form > input {
 }
 
 /*Customer Login Form*/
-#TinForm .row {
-    margin: 100px;
+#TinForm {
+    margin-top: 100px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
-
-#TinForm .form-group {
-    margin: 10px;
-}
+/*#TinForm .form-group {
+    margin-bottom: 20px;
+}*/
 
 /*Customer Info View*/
 .customerInfoBox {
@@ -127,7 +129,8 @@ form > input {
     font-style: italic;
 }
 .customerInfoBox h4 {
-    margin-top: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 .customerInfoBox h4, .customerInfoBox p {
     text-align: center;
@@ -138,13 +141,21 @@ form > input {
 .customerInfoBox form {
     margin-top: 20px;
 }
-.customerInfoBox label {
+/*.customerInfoBox label {
     width: 20%;
     float: left;
+}*/
+#scheme.form-control {
+    /*display: inline-block;*/
 }
-.customerInfoBox input,  .customerInfoBox textarea {
-    width: 60%;
+.customerInfoBox input,
+.customerInfoBox textarea,
+.customerInfoBox select {
+    width: 80%;
     margin: auto;
+}
+.customerInfoBox select {
+    overflow: visible;
 }
 .customerInfoBox input.ng-invalid, .customerInfoBox textarea.ng-invalid {
     border: 1px solid red;
@@ -223,43 +234,6 @@ form > input {
         opacity: 0.5;
     }
 
-    .navbar-brand h2 { /* Restaurant name */
-        font-size: 4vw; /* 1vw = 1% of viewport width */
-    }
-    .navbar-brand p { /* Kosher cert */
-        font-size: .6em;
-        margin-top: 12px;
-    }
-    .navbar-brand p img { /* Star-K */
-        height: 20px;
-    }
-
-    #collapsable-nav a { /* Collapsed nav menu text */
-        font-size: 1.2em;
-    }
-    #collapsable-nav a span { /* Collapsed nav menu glyph */
-        font-size: 1em;
-        margin-right: 5px;
-    }
-
-    #call-btn > a {
-        font-size: 1.5em;
-        display: block;
-        margin: 0 20px;
-        padding: 10px;
-        border: 2px solid #fff;
-        background-color: #f6b319;
-        color: #951c49;
-    }
-
-    #xs-deliver {
-        margin-top: 5px;
-        font-size: .7em;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-    }
-    /* End Header */
-
     .panel-footer section {
         margin-bottom: 30px;
         text-align: center;
@@ -272,18 +246,4 @@ form > input {
         width: 50%;
     }
 
-    #menu-tile, #specials-tile {
-        width: 360px;
-        margin: 0 auto 15px;
-    }
-
-    .menu-item-photo {
-        margin-right: auto;
-    }
-    .menu-item-tile .menu-item-price {
-        text-align: center;
-    }
-    .menu-item-description {
-        text-align: center;
-    }
 }
