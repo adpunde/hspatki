@@ -101,10 +101,6 @@ form > input {
     font-size: 20px;
     color: red;
 }*/
-/*adminBox*/
-.adminBox, .customerBox {
-    margin-top: 100px;
-}
 
 /*Customer Login Form*/
 #TinForm {
@@ -118,66 +114,64 @@ form > input {
 }*/
 
 /*Customer Info View*/
-.customerInfoBox {
-    margin-bottom: 20px;
+#InfoForm {
+    margin-bottom: 40px;
 }
-.customerInfoBox h3 {
+#InfoForm  h3 {
     margin: 40px;
     text-decoration: underline;
+    text-align: center;
 }
-.customerInfoBox #warning {
-    font-style: italic;
-}
-.customerInfoBox h4 {
+#InfoForm  h4 {
     margin-top: 40px;
     margin-bottom: 20px;
 }
-.customerInfoBox h4, .customerInfoBox p {
+#InfoForm  h4, #InfoForm  p {
     text-align: center;
 }
-.customerInfoBox hr {
-    border-color: #AAA;
+#InfoForm #warning {
+    font-style: italic;
 }
-.customerInfoBox form {
-    margin-top: 20px;
-}
-/*.customerInfoBox label {
-    width: 20%;
-    float: left;
-}*/
-#scheme.form-control {
-    /*display: inline-block;*/
-}
-.customerInfoBox input,
-.customerInfoBox textarea,
-.customerInfoBox select {
+
+#InfoForm input,
+#InfoForm textarea,
+#InfoForm select {
     width: 80%;
     margin: auto;
 }
-.customerInfoBox select {
-    overflow: visible;
+#InfoForm hr {
+    border-color: #AAA;
 }
-.customerInfoBox input.ng-invalid, .customerInfoBox textarea.ng-invalid {
-    border: 1px solid red;
-}
-.customerInfoBox input.ng-valid, .customerInfoBox textarea.ng-valid {
-    border: 1px solid green;
-}
-.customerInfoBox #customerPlace,
-.customerInfoBox #customerGood,
-.customerInfoBox #customerService {
+#InfoForm #customerPlace,
+#InfoForm #customerGood,
+#InfoForm #customerService {
     float: right;
     margin-left: 10px;
     margin-right: 10px;
 }
-.customerInfoBox #places,
-.customerInfoBox #goods,
-.customerInfoBox #services {
+#InfoForm #places,
+#InfoForm #goods,
+#InfoForm #services {
     clear: both;
 }
 
-.customerInfoBox #places {
-    margin-bottom: 40px;
+/*#InfoForm input.ng-invalid,
+#InfoForm textarea.ng-invalid {
+    border: 1px solid red;
+}
+#InfoForm input.ng-valid,
+#InfoForm textarea.ng-valid {
+    border: 1px solid green;
+}*/
+
+
+#InfoForm .place {
+    margin-top: 40px;
+}
+
+/*adminBox*/
+.adminBox, .customerBox {
+    margin-top: 100px;
 }
 
 .adminInfoBox {

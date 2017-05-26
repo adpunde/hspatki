@@ -1,211 +1,255 @@
 <div id="main-content" class="container">
-    <div class="customerInfoBox">
-        <form name="InfoForm" class="form-horizontal">
-                <h3 class="text-center">Supplier Information</h3>
-                    <h4>Supplier ID</h4>
-                    <p id="warning">
-                        (At least one of TIN/PAN/Service Tax no is mandatory)
-                    </p>
+    <form id="InfoForm" name="InfoForm" class="form-horizontal">
+        <h3>Supplier Information</h3>
+        <h4>Supplier ID</h4>
+        <p id="warning">
+            (At least one of TIN/PAN/Service Tax no is mandatory)
+        </p>
 
-                    <!-- Identifiers -->
-                    <div class="form-group">
-                        <label for="tin">TIN</label>
-                        <input type="text" id="tin" class="form-control"
-                            ng-model="ctrl.info.tin"
-                            ng-disabled="ctrl.empty('tin');">
-                    </div>
-                    <div class="form-group">
-                        <label for="pan">PAN</label>
-                        <input type="text" id="pan" class="form-control"
-                            ng-model="ctrl.info.pan"
-                            ng-disabled="ctrl.empty('pan');">
-                    </div>
-                    <div class="form-group">
-                        <label for="stn">Service Tax No</label>
-                        <input type="text" id="stn" class="form-control"
-                            ng-model="ctrl.info.stn"
-                            ng-disabled="ctrl.empty('stn');">
-                    </div>
-                    <hr>
+        <!-- Identifiers -->
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="tin">TIN</label>
+            <div class="col-sm-9">
+                <input type="text" id="tin" class="form-control"
+                    ng-model="ctrl.info.tin"
+                    ng-disabled="ctrl.empty('tin');">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="pan">PAN</label>
+            <div class="col-sm-9">
+                <input type="text" id="pan" class="form-control"
+                    ng-model="ctrl.info.pan"
+                    ng-disabled="ctrl.empty('pan');">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="stn">Service Tax No</label>
+            <div class="col-sm-9">
+                <input type="text" id="stn" class="form-control"
+                    ng-model="ctrl.info.stn"
+                    ng-disabled="ctrl.empty('stn');">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3">Scheme</label>
+            <div class="col-sm-9">
+                <select ng-model="ctrl.info.scheme" class="form-control">
+                    <option value="">Select Scheme</option>
+                    <option value="normal">Normal</option>
+                    <option value="composition">Composition</option>
+                    <option value="urd">URD</option>
+                </select>
+            </div>
+        </div>
+        <hr>
 
-                    <!-- GST identifiers -->
-                    <h4>GST Details</h4>
-                    <div class="form-group">
-                        <label for="gstin">GSTIN</label>
-                        <input type="text" id="gstin" class="form-control"
-                            ng-model="ctrl.info.gstin">
-                    </div>
-                    <div class="form-group">
-                        <label for="arn">ARN</label>
-                        <input type="text" id="arn" class="form-control"
-                            ng-model="ctrl.info.arn">
-                    </div>
-                    <hr>
+        <!-- GST identifiers -->
+        <h4>GST Details</h4>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="gstin">GSTIN</label>
+            <div class="col-sm-9">
+                <input type="text" id="gstin" class="form-control"
+                    ng-model="ctrl.info.gstin">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="arn">ARN</label>
+            <div class="col-sm-9">
+                <input type="text" id="arn" class="form-control"
+                    ng-model="ctrl.info.arn">
+            </div>
+        </div>
+        <hr>
 
-                    <!-- Places -->
-                    <h4>Supplier Place</h4>
-                    <div class="form-group">
-                        <label for="name">Name</label>
+        <!-- Places -->
+        <h4>Supplier Place</h4>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="name">Name</label>
+            <div class="col-sm-9">
+                <input type="text" id="name" class="form-control"
+                    ng-model="ctrl.info.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="address">Address</label>
+            <div class="col-sm-9">
+                <textarea id="address" class="form-control"
+                    ng-model="ctrl.info.address">
+                </textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="state">State</label>
+            <div class="col-sm-9">
+                <input type="text" id="state" class="form-control"
+                    ng-model="ctrl.info.state">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="pincode">Pin Code</label>
+            <div class="col-sm-9">
+                <input type="text" id="pincode" class="form-control"
+                    ng-model="ctrl.info.pincode">
+            </div>
+        </div>
+        <hr>
+
+        <!-- Contact person -->
+        <h4>Authorized Signatory</h4>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="personName">Name</label>
+            <div class="col-sm-9">
+                <input type="text" id="personName" class="form-control"
+                    ng-model="ctrl.info.personName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="designation">Designation</label>
+            <div class="col-sm-9">
+                <input type="text" id="designation" class="form-control"
+                    ng-model="ctrl.info.designation">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="mobile">Mobile</label>
+            <div class="col-sm-9">
+                <input type="text" id="mobile" class="form-control"
+                    ng-model="ctrl.info.mobile">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="email">Email</label>
+            <div class="col-sm-9">
+                <input type="text" id="email" class="form-control"
+                    ng-model="ctrl.info.email">
+            </div>
+        </div>
+        <hr>
+
+        <!-- Goods -->
+        <h4>
+            Goods
+            <button id="customerGood" class="btn btn-danger"
+             ng-click="ctrl.removeGood();"> Remove </button>
+            <button id="customerGood" class="btn btn-warning"
+             ng-click="ctrl.addGood();"> Add </button>
+        </h4>
+
+        <div id="goods">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-highlight">
+                    <thead ng-if="ctrl.info.goods.length > 0">
+                        <th>Goods</th>
+                        <th>HSN Code</th>
+                    </thead>
+                    <tbody ng-repeat="good in ctrl.info.goods">
+                        <tr>
+                            <td>
+                                <input type="text"
+                                 class="form-control"
+                                 ng-model="good.name">
+                             </td>
+                            <td>
+                                <input type="text"
+                                 class="form-control"
+                                 ng-model="good.hsn">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Services -->
+        <h4>
+            Services
+            <button id="customerService" class="btn btn-danger"
+             ng-click="ctrl.removeService();"> Remove </button>
+            <button id="customerService" class="btn btn-warning"
+             ng-click="ctrl.addService();"> Add </button>
+        </h4>
+
+        <div id="services">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-highlight">
+                    <thead ng-if="ctrl.info.services.length > 0">
+                        <th>Service</th>
+                        <th>Service Accounting Code</th>
+                    </thead>
+                    <tbody ng-repeat="service in ctrl.info.services">
+                        <tr>
+                            <td>
+                                <input type="text"
+                                 class="form-control"
+                                 ng-model="service.name">
+                             </td>
+                            <td>
+                                <input type="text"
+                                 class="form-control"
+                                 ng-model="service.sac">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Places -->
+        <h4>
+            Additional Places
+            <button id="customerPlace" class="btn btn-danger"
+             ng-click="ctrl.removePlace();"> Remove </button>
+            <button id="customerPlace" class="btn btn-warning"
+             ng-click="ctrl.addPlace();"> Add </button>
+        </h4>
+
+        <div id="places">
+            <div class="place" ng-repeat="place in ctrl.info.places">
+                <p><span class="glyphicon glyphicon-star"></span> Place</p>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="name">Name</label>
+                    <div class="col-sm-9">
                         <input type="text" id="name" class="form-control"
-                            ng-model="ctrl.info.name">
+                            ng-model="place.name">
                     </div>
-                    <div class="form-group">
-                        <label for="address">Address</label>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="address">Address</label>
+                    <div class="col-sm-9">
                         <textarea id="address" class="form-control"
-                            ng-model="ctrl.info.address">
-                        </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="state">State</label>
+                            ng-model="place.address">
+                    </textarea>
+                </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="state">State</label>
+                    <div class="col-sm-9">
                         <input type="text" id="state" class="form-control"
-                            ng-model="ctrl.info.state">
+                            ng-model="place.state">
                     </div>
-                    <div class="form-group">
-                        <label for="pincode">Pin Code</label>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="pincode">Pin Code</label>
+                    <div class="col-sm-9">
                         <input type="text" id="pincode" class="form-control"
-                            ng-model="ctrl.info.pincode">
+                            ng-model="place.pincode">
                     </div>
-                    <hr>
+                </div>
+            </div>
+        </div>
+        <hr>
 
-                    <!-- Contact person -->
-                    <h4>Authorized Signatory</h4>
-                    <div class="form-group">
-                        <label for="personName">Name</label>
-                        <input type="text" id="personName" class="form-control"
-                            ng-model="ctrl.info.personName">
-                    </div>
-                    <div class="form-group">
-                        <label for="designation">Designation</label>
-                        <input type="text" id="designation" class="form-control"
-                            ng-model="ctrl.info.designation">
-                    </div>
-                    <div class="form-group">
-                        <label for="mobile">Mobile</label>
-                        <input type="text" id="mobile" class="form-control"
-                            ng-model="ctrl.info.mobile">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" id="email" class="form-control"
-                            ng-model="ctrl.info.email">
-                    </div>
-                    <hr>
+        <!-- Submit -->
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary"
+                ng-click="ctrl.Update();"
+                ng-disabled="InfoForm.$invalid || !ctrl.info.scheme">
+                Update
+            </button>
+        </div>
 
-                    <!-- Places -->
-                    <h4>
-                        Additional Places
-                        <button id="customerPlace" class="btn btn-danger"
-                         ng-click="ctrl.removePlace();"> Remove </button>
-                        <button id="customerPlace" class="btn btn-warning"
-                         ng-click="ctrl.addPlace();"> Add </button>
-                    </h4>
-
-                    <div id="places">
-                        <div ng-repeat="place in ctrl.info.places">
-                            <p>Place</p>
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" class="form-control"
-                                    ng-model="place.name">
-                            </div>
-                            <div class="form-group">
-                                <label for="address">Address</label>
-                                <textarea id="address" class="form-control"
-                                    ng-model="place.address">
-                                </textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="state">State</label>
-                                <input type="text" id="state" class="form-control"
-                                    ng-model="place.state">
-                            </div>
-                            <div class="form-group">
-                                <label for="pincode">Pin Code</label>
-                                <input type="text" id="pincode" class="form-control"
-                                    ng-model="place.pincode">
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <!-- Goods -->
-                    <h4>
-                        Goods
-                        <button id="customerGood" class="btn btn-danger"
-                         ng-click="ctrl.removeGood();"> Remove </button>
-                        <button id="customerGood" class="btn btn-warning"
-                         ng-click="ctrl.addGood();"> Add </button>
-                    </h4>
-
-                    <div id="goods">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-highlight">
-                                <thead ng-if="ctrl.info.goods.length > 0">
-                                    <th>Goods</th>
-                                    <th>HSN Code</th>
-                                </thead>
-                                <tbody ng-repeat="good in ctrl.info.goods">
-                                    <tr>
-                                        <td>
-                                            <input type="text"
-                                             class="form-control"
-                                             ng-model="good.name">
-                                         </td>
-                                        <td>
-                                            <input type="text"
-                                             class="form-control"
-                                             ng-model="good.hsn">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <!-- Services -->
-                    <h4>
-                        Services
-                        <button id="customerService" class="btn btn-danger"
-                         ng-click="ctrl.removeService();"> Remove </button>
-                        <button id="customerService" class="btn btn-warning"
-                         ng-click="ctrl.addService();"> Add </button>
-                    </h4>
-
-                    <div id="services">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-highlight">
-                                <thead ng-if="ctrl.info.services.length > 0">
-                                    <th>Service</th>
-                                    <th>Service Accounting Code</th>
-                                </thead>
-                                <tbody ng-repeat="service in ctrl.info.services">
-                                    <tr>
-                                        <td>
-                                            <input type="text"
-                                             class="form-control"
-                                             ng-model="service.name">
-                                         </td>
-                                        <td>
-                                            <input type="text"
-                                             class="form-control"
-                                             ng-model="service.sac">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <!-- Submit -->
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary"
-                            ng-click="ctrl.Update();" ng-disabled="InfoForm.$invalid">
-                            Update
-                        </button>
-                    </div>
-
-        </form>
-    </div>
+    </form>
 </div>
