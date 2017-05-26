@@ -22,6 +22,7 @@ var customerSchema = new Schema({
     tin: { type: String },
     pan: { type: String },
     stn: { type: String },
+    scheme: { type: String },
     gstin: { type: String },
     arn: { type: String },
     name: { type: String },
@@ -32,9 +33,9 @@ var customerSchema = new Schema({
     designation: { type: String },
     mobile: { type: String },
     email: { type: String },
-    places: [placeSchema],
     goods: [goodSchema],
-    services: [serviceSchema]
+    services: [serviceSchema],
+    places: [placeSchema]
 }, {
     timestamps: true
 });

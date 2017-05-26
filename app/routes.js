@@ -28,7 +28,7 @@ module.exports = {
                 if (err) {
                     return res.status(404).send(err.message);
                 }
-                res.json(data.tin);
+                res.json({'update': true});
             });
         });
 
