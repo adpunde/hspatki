@@ -3,7 +3,8 @@
 
 angular.module('hsp', ['ui.router'])
 .config(config)
-.constant('AdminLoginTimeout', (5 * 60 * 1000));
+.constant('AdminLoginTimeout', (5 * 60 * 1000))
+.constant('ExcelSheetName', 'customers');
 
 config.$inject = ['$urlRouterProvider', '$stateProvider'];
 function config ($urlRouterProvider, $stateProvider) {

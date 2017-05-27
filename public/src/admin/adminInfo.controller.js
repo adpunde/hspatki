@@ -5,15 +5,30 @@ angular.module('hsp')
 .controller('AdminInfoController', AdminInfoController);
 
 AdminInfoController.$inject = ['AdminService', '$state', '$timeout',
-    'AdminLoginTimeout'];
-function AdminInfoController (AdminService, $state, $timeout, AdminLoginTimeout) {
+    'AdminLoginTimeout', 'DataService'];
+function AdminInfoController (AdminService, $state, $timeout,
+    AdminLoginTimeout, DataService) {
+
     var ctrl = this;
     ctrl.filename = '';
 
     ctrl.download = function () {
-        AdminService.getAllCustomerInfo()
+        AdminService.downloadCustomerInfo()
         .then (function (data) {
-            console.log('File downloaded');
+            if (data.length === 0) {
+                alert('The database is empty!');
+                return;
+            }
+
+            console.log('Writing CSV');
+            DataService.writeCSVFile(data, 'customers.csv', function(err) {
+                if (err) {
+                    alert('Error: ' + err.message);
+                    return;
+                }
+
+                console.log('File downloaded');
+            });
         })
         .catch (function (error) {
             alert('Failed to download file');
@@ -41,46 +56,22 @@ function AdminInfoController (AdminService, $state, $timeout, AdminLoginTimeout)
             return;
 
         console.log('Importing file:', ctrl.filename);
-
-        var reader = new FileReader();
-
-        reader.readAsBinaryString(ctrl.filename);
-
-        reader.onload = function(e) {
-            var data = e.target.result;
-            var workbook = XLSX.read(data, {type : 'binary'});
-            var idx = workbook.SheetNames.indexOf('customers');
-            if (idx === -1) {
-                alert('customers sheet not found in excel file.');
+        DataService.readExcelData(ctrl.filename, function (err, data) {
+            if (err) {
+                alert('Error: ' + err.message);
                 return;
             }
 
-            var objArray = XLSX.utils.sheet_to_json(workbook.Sheets['customers']);
-            var newArray = [];
-            console.log('Total entries found: ', objArray.length);
-            objArray.forEach(function (entry) {
-                if (!entry.tin && !entry.pan && !entry.stn) {
-                    alert('Either of TIN/PAN/STN must be available for every row.');
-                    return;
-                }
-
-                var newEntry = {};
-                if (entry.tin) newEntry.tin = entry.tin;
-                if (entry.pan) newEntry.pan = entry.pan;
-                if (entry.stn) newEntry.stn = entry.stn;
-                if (entry.name) newEntry.name = entry.name;
-                newArray.push(newEntry);
-            });
-
-            AdminService.importCustomerInfo(newArray)
-            .then (function (data) {
+            AdminService.importCustomerInfo(data)
+            .then (function () {
                 alert('File successfully imported');
             })
             .catch (function (error) {
                 alert('Failed to import file: ' + error.message);
             });
-        };
+    });
     };
+
 };
 
 })();

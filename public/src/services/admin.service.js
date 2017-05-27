@@ -22,25 +22,10 @@ function AdminService ($http) {
         });
     };
 
-    service.getAllCustomerInfo = function () {
+    service.downloadCustomerInfo = function () {
         return $http.get('/api/admin/download')
             .then (function (response) {
-                var array = response.data;
-
-                var blob = new Blob([array], { type: 'application/json' });
-                saveAs(blob, "contacts.json");
-
-                var str = '';
-                for (var i = 0; i < array.length; i++) {
-                    str += array[i].tin + ',' + array[i].dealerName + "\n";
-                }
-                blob = new Blob([str], { type: 'text/csv' });
-                saveAs(blob, "contacts.csv");
-
-                // var header = response.headers('content-disposition');
-                // var parts = header.match(new RegExp(".*filename=\"(.*)\""));
-                // console.log(header);
-                // console.log('FileName: ', fileName);
+                return response.data;
             })
             .catch (function (response) {
                 console.log('Error', response.data);
