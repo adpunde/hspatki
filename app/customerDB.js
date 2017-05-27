@@ -64,12 +64,19 @@ var self = module.exports = {
     },
 
     update: function (info, done) {
-        if (!info.tin && !info.pan && !info.stn)
-            return done(new Error('No TIN/PAN/STN specified'));
-
         var old;
         var result;
+        var newProp;
+
         async.series([
+            function (next) {
+                self.uniqueID(info, function (err, prop, value) {
+                    if (err)
+                        return next(err);
+                    newProp = prop;
+                    next();
+                });
+            },
             function (next) {
                 // Fetch older object from the database
                 console.log('ID: ', info._id);
@@ -81,46 +88,27 @@ var self = module.exports = {
                 });
             },
             function (next) {
-                if (!info.tin)
+                if (old[newProp]) {
+                    if (old[newProp] !== info[newProp])
+                        return next(new Error("Same DB ID but different customer ID"));
                     return next();
-                if (old.tin && old.tin === info.tin)
-                    return next();
-                // TIN newly added to the info
-                customers.findOne({"tin": info.tin}, function (err, data) {
+                }
+
+                var query = {};
+                query[newProp] = info[newProp];
+                customers.findOne(query, function (err, data) {
                     if (err)
                         return next(err);
                     if (data)
-                        return next(new Error("TIN already present !"));
+                        return next(new Error("Another entry with same " + newProp + " already present !"));
                     next();
                 });
             },
             function (next) {
-                if (info.tin || !info.pan)
-                    return next();
-                if (old.pan && old.pan === info.pan)
-                    return next();
-                // PAN newly added to the info
-                customers.findOne({"pan": info.pan}, function (err, data) {
-                    if (err)
-                        return next(err);
-                    if (data)
-                        return next(new Error("PAN already present !"));
-                    next();
-                });
-            },
-            function (next) {
-                if (info.tin || info.pan)
-                    return next();
-                // info.stn must exist
-                if (!info.stn || !old.stn || old.stn !== info.stn)
-                    return next(new Error('TIN/PAN/STN not defined'));
-                next();
-            },
-            function (next) {
-                customers.findByIdAndUpdate(info._id, { $set: info }, { new: true })
+                customers.findByIdAndUpdate(info._id, {$set: info}, {new: true})
                 .exec(function (err, data) {
                     if (err)
-                        return done(err);
+                        return next(err);
                     result = data;
                     next();
                 });
