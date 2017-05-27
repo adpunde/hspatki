@@ -9,6 +9,7 @@ var routes = require('./routes');
 var customerDB = require('./customerDB');
 var adminDB = require('./adminDB');
 var contacts = require('./data/contacts.js');
+var xlsx = require('node-xlsx');
 
 var app;
 var server;
@@ -23,6 +24,20 @@ var conf = {
 };
 
 async.series([
+    // function (next) {
+    //     var obj = xlsx.parse(__dirname + '/data/contacts.xlsx');
+    //     console.log('Excel:');
+    //     for (var i = 0; i < obj.length; i++)
+    //         if (obj[i].name === 'customerSheet') {
+    //             var data = obj[i].data;
+    //             var title = data[0];
+    //             if (title[0] === 'tin' && title[1] === 'name' && title[2] === 'address') {
+    //                 for (i = 1; i < data.length; i++)
+    //                     console.log(data[i][0], data[i][1], data[i][2]);
+    //             }
+    //         }
+    //     next(new Error('Error'));
+    // },
     function (next) {
         // Initialize database
         customerDB.init(conf, function (err) {
@@ -69,15 +84,15 @@ async.series([
     function (next) {
         // Load initial contacts to database
         async.forEachOfSeries(contacts, function (value, key, done) {
-            customerDB.add(value, function (err, data) {
-                if (err)
-                    console.log('Error adding ' + key + ': ' + err.message);
-                else
-                    console.log('Added successfully ' + key);
-                done();
-            }, function (err) {
-                next();
-            });
+            // customerDB.add(value, function (err, data) {
+            //     if (err)
+            //         console.log('Error adding ' + key + ': ' + err.message);
+            //     else
+            //         console.log('Added successfully ' + key);
+            //     done();
+            // }, function (err) {
+            //     next();
+            // });
         });
     }
 ], function (err) {

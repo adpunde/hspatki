@@ -21,82 +21,45 @@ var self = module.exports = {
         conn.close();
     },
 
-    find: function (prop, value, done) {
-        if (prop !== 'tin' && prop !== 'pan' && prop !== 'stn')
-            return done(new Error('Invalid property supplied: ' + prop));
+    uniqueID: function (info, done) {
+        if (info.tin)
+            return done(null, 'tin', info.tin);
+        if (info.pan)
+            return done(null, 'pan', info.pan);
+        if (info.stn)
+            return done(null, 'stn', info.stn);
+        done(new Error('No TIN/PAN/STN specified'));
+    },
 
-        var query = {};
-        query[prop] = value;
-
-        // Returns array of items
-        customers.find(query, function (err, data) {
+    find: function (info, done) {
+        self.uniqueID(info, function (err, prop, value) {
             if (err)
+                return done(err);
+
+            var query = {};
+            query[prop] = value;
+            customers.find(query, function (err, data) {
+                if (err)
                     return done(err);
-            if (data.length === 0)
-                return done(new Error(prop + ' not found'));
-            if (data.length > 1)
-                return done(new Error('Multiple entries with same ' + prop));
-            done(null, data[0]);
+                done(null, data, prop);
+            });
         });
     },
 
     add: function (info, done) {
-        if (!info.tin && !info.pan && !info.stn)
-            return done(new Error('No TIN/PAN/STN specified'));
-
-        // User provided tin/pan/stn should be unique
-        var result;
-        async.series([
-            function (next) {
-                if (!info.tin)
-                    return next();
-                self.find('tin', info.tin, function (err, data) {
-                    if (err)
-                        return next(err);
-                    if (data)
-                        return next(new Error('TIN already present'));
-                    next();
-                });
-            },
-            function (next) {
-                // If TIN is validated, no need to validate PAN
-                if (info.tin || !info.pan)
-                    return next();
-                self.find('pan', info.pan, function (err, data) {
-                    if (err)
-                        return next(err);
-                    if (data)
-                        return next(new Error(
-                            'PAN already present. Use TIN as ID.'));
-                    next();
-                });
-            },
-            function (next) {
-                // If TIN or PAN is validated, no need to validate STN
-                if (info.tin || info.pan || !info.pan)
-                    return next();
-                self.find('stn', info.stn, function (err, data) {
-                    if (err)
-                        return next(err);
-                    if (data)
-                        return next(new Error(
-                            'STN already present. Use TIN as ID.'));
-                    next();
-                });
-            },
-            function (next) {
-                console.log('Adding customer: ', info);
-                customers.create(info, function (err, data) {
-                    if (err)
-                        return next(err);
-                    result = data;
-                    next();
-                });
-            }
-        ], function (err) {
+        self.uniqueID(info, function (err, prop, value) {
             if (err)
                 return done(err);
-            done(null, result);
+
+            var query = {};
+            query[prop] = value;
+            console.log('Adding customer: ', query);
+
+            customers.create(info, function (err, data) {
+                if (err)
+                    return next(err);
+                done();
+            });
         });
     },
 
@@ -105,6 +68,7 @@ var self = module.exports = {
             return done(new Error('No TIN/PAN/STN specified'));
 
         var old;
+        var result;
         async.series([
             function (next) {
                 // Fetch older object from the database
@@ -151,26 +115,20 @@ var self = module.exports = {
                 if (!info.stn || !old.stn || old.stn !== info.stn)
                     return next(new Error('TIN/PAN/STN not defined'));
                 next();
+            },
+            function (next) {
+                customers.findByIdAndUpdate(info._id, { $set: info }, { new: true })
+                .exec(function (err, data) {
+                    if (err)
+                        return done(err);
+                    result = data;
+                    next();
+                });
             }
         ], function (err) {
             if (err)
                 return done(err);
-            done(null, info);
-        });
-
-        customers.findOne({"tin": info.tin}, function (err, result) {
-            if (err)
-                return done(err);
-            if (!result)
-                return done(new Error('TIN not found'));
-
-            var id = result._id;
-            customers.findByIdAndUpdate(id, { $set: info }, { new: true })
-            .exec(function (err, data) {
-                if (err)
-                    return done(err);
-                done(null, data);
-            });
+            done(null, result);
         });
     },
 
