@@ -1,0 +1,45 @@
+<div id="main-content" class="container">
+    <form id="TinForm" name="TinForm">
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-4 col-md-4 col-sm-offset-1 col-md-offset-1">
+                    <select ng-model="ctrl.option" class="form-control" name="option">
+                        <option value="">Select ID</option>
+                        <option value="tin">TIN</option>
+                        <option value="pan">PAN</option>
+                        <option value="stn">Service Tax No</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-6 col-md-6">
+                    <input type="text" id="tin" class="form-control"
+                        ng-model="ctrl.value" pattern="([A-Za-z0-9]+)" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 text-center">
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary"
+                     ng-click="ctrl.Submit();"
+                     ng-disabled="ctrl.option === '' || TinForm.$invalid">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+                    <!-- <a class="btn btn-default dropdown-toggle btn-select"
+                    data-toggle="dropdown" href="#" id="btnId">
+                        Select
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-model="ctrl.tin">TIN</li>
+                        <li ng-model="ctrl.pan">PAN</li>
+                        <li ng-model="ctrl.stn">Service Tax No</li>
+                    </ul> -->

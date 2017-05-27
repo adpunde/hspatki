@@ -9,14 +9,6 @@ function CustomerInfoController (info, CustomerService, $state) {
     var ctrl = this;
     ctrl.info = info;
 
-    ctrl.removeEmptyObjects = function (array) {
-        for (var i = 0; i < array.length; i++) {
-            console.log('Array' + i, array[i]);
-            if (angular.equals(array[i], {}))
-                array.splice(i, 1);
-        }
-    };
-
     ctrl.Update = function () {
         // Remove empty objects
         var i, array, obj;

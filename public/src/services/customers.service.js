@@ -10,7 +10,10 @@ function CustomerService ($http) {
     var info = {};
 
     service.getCustomerInfo = function (prop, value) {
-        return $http.get('/api/customers', {params: {"prop": prop, "value": value}})
+        var query = {};
+        query[prop] = value;
+
+        return $http.get('/api/customers/get', {params: query})
             .then (function (response) {
                 return response.data;
             })

@@ -11,9 +11,6 @@ function CustomerLoginController (CustomerService, $state) {
     ctrl.value = '';
 
     ctrl.Submit = function () {
-        var prop = ctrl.option;
-        console.log('Prop: ', ctrl.option, 'Value:', ctrl.value);
-
         // Make GET request and retrieve customer data
         CustomerService.getCustomerInfo(ctrl.option, ctrl.value)
         .then (function (info) {
@@ -24,6 +21,7 @@ function CustomerLoginController (CustomerService, $state) {
             $state.go('customerLogin');
         });
     };
+
 };
 
 })();

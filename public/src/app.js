@@ -40,6 +40,7 @@ function config ($urlRouterProvider, $stateProvider) {
         controllerAs: 'adminCtrl'
     })
     .state('adminInfo', {
+        url: '/adminInfo',
         templateUrl: 'src/admin/adminInfo.view.html',
         controller: 'AdminInfoController',
         controllerAs: 'ctrl'

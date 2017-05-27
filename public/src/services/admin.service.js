@@ -9,7 +9,7 @@ function AdminService ($http) {
     var service = this;
 
     service.Login = function (username, password) {
-        return $http.post('/api/adminLogin',
+        return $http.post('/api/admin/login',
             { "username": username, "password": password },
             {'Content-Type': 'application/x-www-form-urlencoded'}
         )
@@ -46,6 +46,19 @@ function AdminService ($http) {
                 console.log('Error', response.data);
                 throw new Error(response.data);
             });
+    };
+
+    service.importCustomerInfo = function (array) {
+        return $http.post('/api/admin/import', JSON.stringify(array),
+            {'Content-Type': 'application/json'}
+        )
+        .then (function (response) {
+            return response.data;
+        })
+        .catch (function (response) {
+            console.log('Error', response.data);
+            throw new Error(response.data);
+        });
     };
 };
 

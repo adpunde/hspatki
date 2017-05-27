@@ -1,25 +1,37 @@
 <div id="main-content" class="container-float">
-    <div class="row">
-        <div class="col-sm-4 col-md-4">
-            <div class="adminInfoBox">
-                <a href="" target="_blank" class="btn btn-primary" ng-click="ctrl.download();">
-                    Download Contacts
-                </a>
-            </div>
+    <div id="AdminInfoForm" name="AdminViewForm">
+
+        <div class="col-sm-12 col-md-12">
+            <a href="" target="_blank" class="btn btn-primary" ng-click="ctrl.download();">
+                Download Contacts
+            </a>
         </div>
-        <div class="col-sm-4 col-md-4">
-            <div class="adminInfoBox">
+
+        <div class="col-sm-12 col-md-12">
+            <button type="submit" class="btn btn-success" ng-click="ctrl.add();">
+                Add new customer
+            </button>
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+            <!-- <button type="submit" class="btn btn-info" ng-click="ctrl.import();">
+                Import Excel
+            </button> -->
+            <!-- <form>
+                <label ng-click="ctrl.import($event);" for="excel-file">Browse
+                    <input type="file" id="excel-file" name="excel-file" style="display:none;"
+                     ng-model="ctrl.filepath">
+                </label>
+             </form> -->
+             <button ng-click="ctrl.import();">Import Excel</button>
+             <input type="file" accept=".xlsx" file-select="ctrl.filename">
+        </div>
+
+        <div class="col-sm-12 col-md-12">
                 <a href="#" class="btn btn-danger" ui-sref="adminLogin">
                     Log Out
                 </a>
-            </div>
         </div>
-        <div class="col-sm-4 col-md-4">
-            <div class="adminInfoBox">
-                <button type="submit" class="btn btn-success" ng-click="ctrl.add();">
-                    Add new customer
-                </button>
-            </div>
-        </div>
+
     </div>
 </div>
