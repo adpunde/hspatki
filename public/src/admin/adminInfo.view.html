@@ -23,7 +23,9 @@
                      ng-model="ctrl.filepath">
                 </label>
              </form> -->
-             <button ng-click="ctrl.import();">Import Excel</button>
+             <button class="btn btn-info" ng-click="ctrl.import();">
+                 Import Excel
+             </button>
              <input type="file" accept=".xlsx" file-select="ctrl.filename">
         </div>
 
@@ -32,6 +34,12 @@
                     Log Out
                 </a>
         </div>
+
+        <!-- <div class="col-sm-12 col-md-12">
+            <button class="btn btn-danger" ng-click="ctrl.delete();">
+                Delete Data
+            </button>
+        </div> -->
 
     </div>
 </div>

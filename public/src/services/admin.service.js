@@ -60,6 +60,19 @@ function AdminService ($http) {
             throw new Error(response.data);
         });
     };
+
+    service.deleteCustomerInfo = function () {
+        return $http.post('/api/admin/delete', {},
+            {'Content-Type': 'application/json'}
+        )
+        .then (function (response) {
+            return response.data;
+        })
+        .catch (function (response) {
+            console.log('Error', response.data);
+            throw new Error(response.data);
+        });
+    };
 };
 
 })();

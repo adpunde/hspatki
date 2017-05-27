@@ -26,6 +26,16 @@ function AdminInfoController (AdminService, $state, $timeout, AdminLoginTimeout)
 
     $timeout(function () { $state.go('adminLogin'); }, AdminLoginTimeout);
 
+    ctrl.delete = function () {
+        AdminService.deleteCustomerInfo()
+        .then (function (data) {
+            console.log('Customer info deleted');
+        })
+        .catch (function (error) {
+            alert('Failed to delete customer info');
+        });
+    };
+
     ctrl.import = function () {
         if (!ctrl.filename)
             return;
@@ -64,7 +74,7 @@ function AdminInfoController (AdminService, $state, $timeout, AdminLoginTimeout)
 
             AdminService.importCustomerInfo(newArray)
             .then (function (data) {
-                console.log('File successfully imported');
+                alert('File successfully imported');
             })
             .catch (function (error) {
                 alert('Failed to import file: ' + error.message);
