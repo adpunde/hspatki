@@ -20,7 +20,6 @@ function AdminInfoController (AdminService, $state, $timeout,
                 return;
             }
 
-            console.log('Writing CSV');
             DataService.writeCSVFile(data, 'customers.csv', function(err) {
                 if (err) {
                     alert('Error: ' + err.message);
