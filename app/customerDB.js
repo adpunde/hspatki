@@ -53,7 +53,7 @@ var self = module.exports = {
 
             var query = {};
             query[prop] = value;
-            console.log('Adding customer: ', query);
+            console.log('Adding customer: ' + prop +':' + value);
 
             customers.create(info, function (err, data) {
                 if (err)
