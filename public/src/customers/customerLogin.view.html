@@ -4,7 +4,7 @@
         <div class="form-group">
             <div class="col-sm-4 col-xs-4">
                 <select ng-model="ctrl.option" class="form-control" name="option">
-                    <option value="">Select ID</option>
+                    <!-- <option value="">Select ID</option> -->
                     <option value="tin">TIN</option>
                     <option value="pan">PAN</option>
                     <option value="stn">Service Tax No</option>
@@ -13,7 +13,8 @@
 
             <div class="col-sm-8 col-xs-8">
                 <input type="text" id="tin" class="form-control"
-                    ng-model="ctrl.value" pattern="([A-Za-z0-9]+)" required>
+                    ng-model="ctrl.value" pattern="([A-Za-z0-9]+)"
+                    ng-change="ctrl.value=ctrl.value.toUpperCase();" required>
             </div>
         </div>
 

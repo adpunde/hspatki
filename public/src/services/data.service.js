@@ -139,9 +139,9 @@ function DataService (ExcelSheetName) {
                 }
 
                 var newEntry = {};
-                if (entry.tin) newEntry.tin = entry.tin;
-                if (entry.pan) newEntry.pan = entry.pan;
-                if (entry.stn) newEntry.stn = entry.stn;
+                if (entry.tin) newEntry.tin = entry.tin.toUpperCase();
+                if (entry.pan) newEntry.pan = entry.pan.toUpperCase();
+                if (entry.stn) newEntry.stn = entry.stn.toUpperCase();
                 if (entry.name) newEntry.name = entry.name;
                 newArray.push(newEntry);
             });

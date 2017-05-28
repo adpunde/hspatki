@@ -12,7 +12,8 @@
             <div class="col-sm-9">
                 <input type="text" id="tin" class="form-control"
                     ng-model="ctrl.info.tin"
-                    ng-disabled="ctrl.empty('tin');">
+                    ng-disabled="ctrl.empty('tin');"
+                    ng-change="ctrl.info.tin=ctrl.info.tin.toUpperCase();">
             </div>
         </div>
         <div class="form-group">
@@ -20,7 +21,8 @@
             <div class="col-sm-9">
                 <input type="text" id="pan" class="form-control"
                     ng-model="ctrl.info.pan"
-                    ng-disabled="ctrl.empty('pan');">
+                    ng-disabled="ctrl.empty('pan');"
+                    ng-change="ctrl.info.pan=ctrl.info.pan.toUpperCase();">
             </div>
         </div>
         <div class="form-group">
@@ -28,7 +30,8 @@
             <div class="col-sm-9">
                 <input type="text" id="stn" class="form-control"
                     ng-model="ctrl.info.stn"
-                    ng-disabled="ctrl.empty('stn');">
+                    ng-disabled="ctrl.empty('stn');"
+                    ng-change="ctrl.info.stn=ctrl.info.stn.toUpperCase();">
             </div>
         </div>
         <div class="form-group">
