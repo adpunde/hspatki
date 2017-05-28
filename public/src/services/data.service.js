@@ -8,72 +8,93 @@ DataService.$inject = ['ExcelSheetName'];
 function DataService (ExcelSheetName) {
     var service = this;
 
-    service.writeCSVFile = function (data, filename) {
-        console.log('Data', data);
-        var fieldTitles = ['tin', 'pan', 'stn', 'scheme', 'gstin', 'arn',
-            'name', 'address', 'state', 'pincode',
-            'personName', 'designation', 'mobile', 'email'
-        ];
-
-        var i, j;
-        var goodsIndex = 0;
-        var servicesIndex = 0;
-        var placesIndex = 0;
-
+    service.writeCSVFile = function (data, filename, done) {
         var CheckObjField = function (obj, field) {
             if (obj[field])
                 return obj[field];
             return '';
         };
 
-        var CheckArrayField = function (array, index, field) {
-            console.log(array);
-            if (array && array[index] && array[index].field)
-                return array[index].field;
+        var CheckArrayField = function (obj, array, index, field) {
+            if (obj[array] && obj[array][index])
+                return obj[array][index][field];
             return '';
         };
 
-        data.forEach(function (row) {
-            if (row.goods && row.goods.length > 0) {
-                if (goodsIndex < row.goods.length)
-                    goodsIndex = row.goods.length;
+        var CalculateMaxIndices = function (data) {
+            data.forEach(function (row) {
+                if (row.goods && row.goods.length > 0) {
+                    if (maxGoodsIndex < row.goods.length)
+                        maxGoodsIndex = row.goods.length;
+                }
+                if (row.services && row.services.length > 0) {
+                    if (maxServicesIndex < row.services.length)
+                        maxServicesIndex = row.services.length;
+                }
+                if (row.places && row.places.length > 0) {
+                    if (maxPlacesIndex < row.places.length)
+                        maxPlacesIndex = row.places.length;
+                }
+            });
+        };
+
+        var AppendFieldTitles = function (fieldTitles, maxGoodsIndex,
+                maxServicesIndex, maxPlacesIndex) {
+            for (var j = 1; j <= maxGoodsIndex; j++) {
+                fieldTitles.push('gname' + j);
+                fieldTitles.push('gcode' + j);
             }
-            if (row.services && row.services.length > 0) {
-                if (servicesIndex < row.services.length)
-                    servicesIndex = row.services.length;
+
+            for (var j = 1; j <= maxServicesIndex; j++) {
+                fieldTitles.push('sname' + j);
+                fieldTitles.push('scode' + j);
             }
-            if (row.places && row.places.length > 0) {
-                if (placesIndex < row.places.length)
-                    placesIndex = row.places.length;
+
+            for (var j = 1; j <= maxPlacesIndex; j++) {
+                fieldTitles.push('pname' + j);
+                fieldTitles.push('paddress' + j);
+                fieldTitles.push('pstate' + j);
+                fieldTitles.push('pcode' + j);
             }
-        });
+        };
+
+        var fieldTitles = ['tin', 'pan', 'stn', 'scheme', 'gstin', 'arn',
+            'name', 'address', 'state', 'pincode',
+            'personName', 'designation', 'mobile', 'email'
+        ];
+
+        var maxGoodsIndex = 0;
+        var maxServicesIndex = 0;
+        var maxPlacesIndex = 0;
+
+        CalculateMaxIndices(data);
+        console.log(maxGoodsIndex, maxServicesIndex, maxPlacesIndex);
 
         var lines = '';
         data.forEach(function (row) {
             var fields = [];
-            for (i = 0; i < fieldTitles.length; i++) {
-                fields.push(CheckObjField(row, fieldTitles[i]));
+            for (var j = 0; j < fieldTitles.length; j++) {
+                fields.push(CheckObjField(row, fieldTitles[j]));
             }
 
             var goodsFields = [];
-            for (j = 0; j < goodsIndex; j++) {
-                goodsFields.push(CheckArrayField(row.goods, j, name));
-                goodsFields.push(CheckArrayField(row.goods, j, hsn));
-                console.log(goodsFields);
+            for (var j = 0; j < maxGoodsIndex; j++) {
+                goodsFields.push(CheckArrayField(row, 'goods', j, 'name'));
+                goodsFields.push(CheckArrayField(row, 'goods', j, 'hsn'));
             }
 
             var servicesFields = [];
-            for (j = 0; j < servicesIndex; j++) {
-                servicesFields.push(CheckArrayField(row.services, j, name));
-                servicesFields.push(CheckArrayField(row.services, j, sac));
+            for (var j = 0; j < maxServicesIndex; j++) {
+                servicesFields.push(CheckArrayField(row, 'services', j, 'name'));
+                servicesFields.push(CheckArrayField(row, 'services', j, 'sac'));
             }
 
             var placesFields = [];
-            for (j = 0; j < placesIndex; j++) {
-                placesFields.push(CheckArrayField(row.places, j, name));
-                placesFields.push(CheckArrayField(row.places, j, address));
-                placesFields.push(CheckArrayField(row.places, j, state));
-                placesFields.push(CheckArrayField(row.places, j, pincode));
+            for (var j = 0; j < maxPlacesIndex; j++) {
+                placesFields.push(CheckArrayField(row, 'places', j, 'name'));
+                placesFields.push(CheckArrayField(row, 'places', j, 'address'));
+                placesFields.push(CheckArrayField(row, 'places', j, 'state'));
+                placesFields.push(CheckArrayField(row, 'places', j, 'pincode'));
             }
 
             var newRow = fields.join(',') + ',' +
@@ -81,32 +102,19 @@ function DataService (ExcelSheetName) {
                 servicesFields.join(',') + ',' +
                 placesFields.join(',');
 
-            lines += newRow;
-            lines += "\n";
+            console.log(newRow);
+
+            lines = lines + newRow + "\n";
         });
 
-        for (j = 0; j < goodsIndex; j++) {
-            fieldTitles.push('goodsname' + j);
-            fieldTitles.push('goodshsn' + j);
-        }
-
-        for (j = 0; j < servicesIndex; j++) {
-            fieldTitles.push('servicesname' + j);
-            fieldTitles.push('servicessac' + j);
-        }
-
-        for (j = 0; j < placesIndex; j++) {
-            fieldTitles.push('placesname' + j);
-            fieldTitles.push('placesaddress' + j);
-            fieldTitles.push('placesstate' + j);
-            fieldTitles.push('placespincode' + j);
-        }
+        AppendFieldTitles(fieldTitles, maxGoodsIndex, maxServicesIndex, maxPlacesIndex);
 
         var firstRow = fieldTitles.join(',');
         var fileData = firstRow + "\n" + lines;
 
         var blob = new Blob([fileData], { type: 'text/csv' });
         saveAs(blob, filename);
+        done();
     }
 
     service.readExcelData = function (filename, done) {

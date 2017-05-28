@@ -7,11 +7,11 @@
             </a>
         </div>
 
-        <div class="col-sm-12 col-md-12">
+        <!-- <div class="col-sm-12 col-md-12">
             <button type="submit" class="btn btn-success" ng-click="ctrl.add();">
                 Add new customer
             </button>
-        </div>
+        </div> -->
 
         <div class="col-sm-12 col-md-12">
             <!-- <button type="submit" class="btn btn-info" ng-click="ctrl.import();">
@@ -26,7 +26,9 @@
              <button class="btn btn-info" ng-click="ctrl.import();">
                  Import Excel
              </button>
-             <input type="file" accept=".xlsx" file-select="ctrl.filename">
+             <input type="file" data-buttonText="Browse"
+              accept=".xlsx" file-select="ctrl.filename">
+             <p class="importWarning">(Only tin, pan, stn and name are preserved)</p>
         </div>
 
         <div class="col-sm-12 col-md-12">
@@ -35,11 +37,11 @@
                 </a>
         </div>
 
-        <!-- <div class="col-sm-12 col-md-12">
+        <div class="col-sm-12 col-md-12">
             <button class="btn btn-danger" ng-click="ctrl.delete();">
                 Delete Data
             </button>
-        </div> -->
+        </div>
 
     </div>
 </div>

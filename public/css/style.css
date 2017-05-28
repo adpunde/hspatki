@@ -175,27 +175,21 @@ form > input {
     margin: auto;
 }
 #AdminInfoForm button,
-#AdminInfoForm a,
-#AdminInfoForm label {
+#AdminInfoForm a {
     width: 200px;
     margin: 20px;
 }
-
-#AdminInfoForm label {
+/*#AdminInfoForm label {
     text-align: center;
     background-color: brown;
     line-height: 2.5;
     border-radius: 4px;
+}*/
+#AdminInfoForm input {
+    display: inline-block;
 }
-
-/*adminBox*/
-.adminBox, .customerBox {
-    margin-top: 100px;
-}
-
-.adminInfoBox {
-    margin: 40px;
-    text-align: center;
+#AdminInfoForm .importWarning {
+    font-style: italic;
 }
 
 @media (min-width: 1200px) {
