@@ -57,7 +57,7 @@ var self = module.exports = {
 
             customers.create(info, function (err, data) {
                 if (err)
-                    return next(err);
+                    return done(err);
                 done();
             });
         });
