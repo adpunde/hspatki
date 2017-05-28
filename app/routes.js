@@ -71,7 +71,11 @@ module.exports = {
         // Stream a file as an attachment
         // var fileName = db.getFileName();
         // res.download(fileName);
+        var importInProgress = false;
         app.post('/api/admin/import', function (req, res) {
+            if (importInProgress) return;
+            importInProgress = true;
+
             var array = req.body;
             var dupArray = [];
 
@@ -136,6 +140,7 @@ module.exports = {
                     });
                 }
             ], function (err) {
+                importInProgress = false;
                 if (err)
                     return res.status(500).send(err.message);
                 res.json({"import": true});
