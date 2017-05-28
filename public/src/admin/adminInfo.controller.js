@@ -68,7 +68,7 @@ function AdminInfoController (AdminService, $state, $timeout,
             .catch (function (error) {
                 alert('Failed to import file: ' + error.message);
             });
-    });
+        });
     };
 
 };

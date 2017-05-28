@@ -144,9 +144,9 @@ function DataService (ExcelSheetName) {
                 if (entry.stn) newEntry.stn = entry.stn;
                 if (entry.name) newEntry.name = entry.name;
                 newArray.push(newEntry);
-
-                done(null, newArray);
             });
+
+            done(null, newArray);
         };
     }
 
