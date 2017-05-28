@@ -7,11 +7,11 @@ module.exports = {
             var info = req.query;
             customerDB.find(info, function (err, data, prop) {
                 if (err)
-                    return res.status(404).send(err.message);
+                    return res.status(500).send(err.message);
                 if (data.length === 0)
-                    return res.status(404).send(prop + ':' + info[prop] + ' not found');
+                    return res.status(500).send(prop + ':' + info[prop] + ' not found');
                 if (data.length > 1)
-                    return res.status(404).send('Multiple entries with same ' + prop);
+                    return res.status(500).send('Multiple entries with same ' + prop);
                 res.json(data[0]);
             });
         });
@@ -21,7 +21,7 @@ module.exports = {
             var info = req.body;
             customerDB.add(info, function (err, data) {
                 if (err) {
-                    return res.status(404).send(err.message);
+                    return res.status(500).send(err.message);
                 }
                 res.json({'add': true});
             });
@@ -32,7 +32,7 @@ module.exports = {
             var info = req.body;
             customerDB.update(info, function (err, data) {
                 if (err) {
-                    return res.status(404).send(err.message);
+                    return res.status(500).send(err.message);
                 }
                 res.json({'update': true});
             });
@@ -43,14 +43,14 @@ module.exports = {
             if (adminDB.validateAdmin(data)) {
                 return res.json({'login': 'true'});
             }
-            res.status(404).send('Invalid credentials');
+            res.status(401).send('Invalid credentials');
         });
 
         app.get('/api/admin/download', function (req, res) {
             console.log('GET download customer info');
             customerDB.get(function (err, data) {
                 if (err)
-                    return res.status(404).send(err.message);
+                    return res.status(500).send(err.message);
 
                 var str = JSON.stringify(data);
                 res.setHeader('Content-disposition', 'attachment; filename=contacts.json');
@@ -63,7 +63,7 @@ module.exports = {
             console.log('DELETE customer info');
             customerDB.clean(function (err) {
                 if (err)
-                    return res.status(404).send(err.message);
+                    return res.status(500).send(err.message);
                 res.json({'delete': true});
             });
         });
@@ -137,7 +137,7 @@ module.exports = {
                 }
             ], function (err) {
                 if (err)
-                    return res.status(404).send(err.message);
+                    return res.status(500).send(err.message);
                 res.json({"import": true});
             });
         });
