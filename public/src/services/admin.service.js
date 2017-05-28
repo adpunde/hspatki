@@ -35,7 +35,7 @@ function AdminService ($http) {
 
     service.importCustomerInfo = function (array) {
         return $http.post('/api/admin/import', JSON.stringify(array),
-            {'Content-Type': 'application/json'}
+            {'Content-Type': 'application/json'}, {'timeout': 5000}
         )
         .then (function (response) {
             return response.data;
