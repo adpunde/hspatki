@@ -15,10 +15,10 @@ var server;
 var conf = {
     port: 4000,
     hostip: '10.0.0.100',
-    dbfile: path.resolve(__dirname + '/data/contacts.json'),
+    //dbfile: path.resolve(__dirname + '/data/contacts.json'),
     staticDir: 'public',
-    //mongodbUrl: 'mongodb://hspatki:hspatki@ds151451.mlab.com:51451/hspatki'
-    mongodbUrl: 'mongodb://localhost:27017/hspatki'
+    mongodbUrl: 'mongodb://hspatki:hspatki@ds151451.mlab.com:51451/hspatki'
+    // mongodbUrl: 'mongodb://localhost:27017/hspatki'
 };
 
 async.series([
