@@ -2,8 +2,14 @@
     <div id="AdminInfoForm" name="AdminViewForm">
 
         <div class="col-sm-12 col-md-12">
-            <a href="" target="_blank" class="btn btn-primary" ng-click="ctrl.download();">
-                Download Contacts
+            <a href="" target="_blank" class="btn btn-primary" ng-click="ctrl.download('csv');">
+                Download Contacts (CSV)
+            </a>
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+            <a href="" target="_blank" class="btn btn-success" ng-click="ctrl.download('json');">
+                Download Contacts (JSON)
             </a>
         </div>
 
@@ -32,14 +38,14 @@
         </div>
 
         <div class="col-sm-12 col-md-12">
-                <a href="#" class="btn btn-danger" ui-sref="adminLogin">
+                <a href="#" class="btn btn-warning" ui-sref="adminLogin">
                     Log Out
                 </a>
         </div>
 
         <div class="col-sm-12 col-md-12">
             <button class="btn btn-danger" ng-click="ctrl.delete();">
-                Delete Data
+                <span class="glyphicon glyphicon-alert"></span> Delete All Data
             </button>
         </div>
 

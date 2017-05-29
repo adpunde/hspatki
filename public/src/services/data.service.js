@@ -8,6 +8,22 @@ DataService.$inject = ['ExcelSheetName'];
 function DataService (ExcelSheetName) {
     var service = this;
 
+    service.writeFile = function (data, filename, type, done) {
+        if (type === 'json') {
+            service.writeJSONFile(data, filename + '.json', done);
+        }
+        else {
+            service.writeJSONFile(data, filename + '.csv', done);
+        }
+    };
+
+    service.writeJSONFile = function (data, filename, done) {
+        var fileData = JSON.stringify(data, null, 4);
+        var blob = new Blob([fileData], { type: 'application/json' });
+        saveAs(blob, filename);
+        done();
+    };
+
     service.writeCSVFile = function (data, filename, done) {
         var CheckObjField = function (obj, field) {
             if (obj[field])

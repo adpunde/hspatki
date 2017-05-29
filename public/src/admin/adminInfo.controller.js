@@ -12,7 +12,7 @@ function AdminInfoController (AdminService, $state, $timeout,
     var ctrl = this;
     ctrl.filename = '';
 
-    ctrl.download = function () {
+    ctrl.download = function (type) {
         AdminService.downloadCustomerInfo()
         .then (function (data) {
             if (data.length === 0) {
@@ -20,7 +20,7 @@ function AdminInfoController (AdminService, $state, $timeout,
                 return;
             }
 
-            DataService.writeCSVFile(data, 'customers.csv', function(err) {
+            DataService.writeFile(data, 'customers', type, function(err) {
                 if (err) {
                     alert('Error: ' + err.message);
                     return;
@@ -41,9 +41,12 @@ function AdminInfoController (AdminService, $state, $timeout,
     $timeout(function () { $state.go('adminLogin'); }, AdminLoginTimeout);
 
     ctrl.delete = function () {
+        if (!confirm("Are you sure ?"))
+            return;
+
         AdminService.deleteCustomerInfo()
         .then (function (data) {
-            console.log('Customer info deleted');
+            alert('All customer info deleted');
         })
         .catch (function (error) {
             alert('Failed to delete customer info');
