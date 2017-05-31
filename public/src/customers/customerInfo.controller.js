@@ -9,7 +9,7 @@ function CustomerInfoController (info, CustomerService, $state) {
     var ctrl = this;
     ctrl.info = info;
 
-    ctrl.Update = function () {
+    ctrl.Submit = function (stateChange) {
         // Remove empty objects
         var i, array, obj;
 
@@ -44,11 +44,11 @@ function CustomerInfoController (info, CustomerService, $state) {
         CustomerService.updateCustomerInfo(ctrl.info)
         .then (function (tin) {
             alert('Data uploaded successfully !');
-            $state.go('customerLogin');
+            if (stateChange)
+                $state.go('customerLogin');
         })
         .catch (function (error) {
             alert('Error updating database: ' + error.message);
-            $state.go('customerLogin');
         });
     };
 

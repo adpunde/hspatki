@@ -38,7 +38,9 @@ function AdminInfoController (AdminService, $state, $timeout,
         $state.go('adminNewCustomer');
     };
 
-    $timeout(function () { $state.go('adminLogin'); }, AdminLoginTimeout);
+    // var timer = $timeout(function () {
+    //      $state.go('adminLogin');
+    // }, AdminLoginTimeout);
 
     ctrl.delete = function () {
         if (!confirm("Are you sure ?"))

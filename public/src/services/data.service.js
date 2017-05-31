@@ -13,7 +13,7 @@ function DataService (ExcelSheetName) {
             service.writeJSONFile(data, filename + '.json', done);
         }
         else {
-            service.writeJSONFile(data, filename + '.csv', done);
+            service.writeCSVFile(data, filename + '.csv', done);
         }
     };
 
@@ -159,6 +159,7 @@ function DataService (ExcelSheetName) {
                 if (entry.pan) newEntry.pan = entry.pan.toUpperCase();
                 if (entry.stn) newEntry.stn = entry.stn.toUpperCase();
                 if (entry.name) newEntry.name = entry.name;
+                if (entry.address) newEntry.address = entry.address;
                 newArray.push(newEntry);
             });
 

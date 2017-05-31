@@ -35,7 +35,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-3">Scheme</label>
+            <label class="control-label col-sm-3">Scheme
+                <span class="asterisk">*</span>
+            </label>
             <div class="col-sm-9">
                 <select ng-model="ctrl.info.scheme" class="form-control">
                     <option value="">Select Scheme</option>
@@ -247,10 +249,15 @@
 
         <!-- Submit -->
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary"
-                ng-click="ctrl.Update();"
+            <button type="submit" class="btn btn-info"
+                ng-click="ctrl.Submit(false);"
                 ng-disabled="InfoForm.$invalid || !ctrl.info.scheme">
-                Update
+                Save
+            </button>
+            <button id="submit" type="submit" class="btn btn-primary"
+                ng-click="ctrl.Submit(true);"
+                ng-disabled="InfoForm.$invalid || !ctrl.info.scheme">
+                Submit
             </button>
         </div>
 

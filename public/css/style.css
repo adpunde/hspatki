@@ -132,6 +132,12 @@ form > input {
 #InfoForm #warning {
     font-style: italic;
 }
+#InfoForm .asterisk {
+    color: red;
+}
+#InfoForm #submit {
+    margin-left: 20px;
+}
 
 #InfoForm input,
 #InfoForm textarea,
