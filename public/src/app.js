@@ -11,12 +11,12 @@ function config ($urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise ('/');
 
     $stateProvider
-    .state('home', {
-        url: '/',
-        templateUrl: 'src/home/home.view.html'
-    })
+    // .state('home', {
+    //     url: '/',
+    //     templateUrl: 'src/home/home.view.html'
+    // })
     .state('customerLogin', {
-        url: '/customerLogin',
+        url: '/',
         templateUrl: 'src/customers/customerLogin.view.html',
         controller: 'CustomerLoginController',
         controllerAs: 'ctrl'
@@ -35,7 +35,7 @@ function config ($urlRouterProvider, $stateProvider) {
         }
     })
     .state('adminLogin', {
-        url: '/admin',
+        url: '/admin/login',
         templateUrl: 'src/admin/adminLogin.view.html',
         controller: 'AdminLoginController',
         controllerAs: 'adminCtrl'
