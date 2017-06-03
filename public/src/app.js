@@ -1,7 +1,7 @@
 (function () {
 'use strict';
 
-angular.module('hsp', ['ui.router'])
+angular.module('hsp', ['ui.router', 'Spinner'])
 .config(config)
 .constant('AdminLoginTimeout', (5 * 60 * 1000))
 .constant('ExcelSheetName', 'customers');

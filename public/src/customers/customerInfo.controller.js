@@ -4,10 +4,11 @@
 angular.module('hsp')
 .controller('CustomerInfoController', CustomerInfoController);
 
-CustomerInfoController.$inject = ['info', 'CustomerService', '$state'];
-function CustomerInfoController (info, CustomerService, $state) {
+CustomerInfoController.$inject = ['info', 'CustomerService', '$state', '$rootScope'];
+function CustomerInfoController (info, CustomerService, $state, $rootScope) {
     var ctrl = this;
     ctrl.info = info;
+    ctrl.origInfo = Object.assign({}, info);
 
     ctrl.Submit = function (stateChange) {
         // Remove empty objects
@@ -41,6 +42,7 @@ function CustomerInfoController (info, CustomerService, $state) {
         }
 
         // Make POST request and update customer data
+        $rootScope.$broadcast('spinner:show', {on: true});
         CustomerService.updateCustomerInfo(ctrl.info)
         .then (function (tin) {
             alert('Data uploaded successfully !');
@@ -49,11 +51,14 @@ function CustomerInfoController (info, CustomerService, $state) {
         })
         .catch (function (error) {
             alert('Error updating database: ' + error.message);
+        })
+        .finally (function () {
+            $rootScope.$broadcast('spinner:show', {on: false});
         });
     };
 
     ctrl.empty = function (prop) {
-        if (ctrl.info[prop]) {
+        if (ctrl.origInfo[prop]) {
             return true;
         }
         return false;

@@ -106,14 +106,11 @@ module.exports = {
                     next();
                 },
                 function (next) {
-                    // Check if ID already present in database
                     async.forEachOfSeries(array, function (info, key, done) {
-                        console.log(key, info);
-                        customerDB.find(info, function (err, data, prop) {
+                        // console.log(info);
+                        customerDB.validateAdd(info, function (err) {
                             if (err)
                                 return done(err);
-                            if (data.length !== 0)
-                                return done(new Error('Data with ' + prop + ':' + info[prop] + 'already present'));
                             done();
                         });
                     }, function (err) {

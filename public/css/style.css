@@ -110,12 +110,17 @@ form > input {
     margin-right: auto;
 }
 
-#TinForm div {
+/*#TinForm div {
     margin-top: 20px;
-}
-/*#TinForm .form-group {
-    margin-bottom: 20px;
 }*/
+
+/*#TinForm select {
+    margin-bottom: 40px;
+}*/
+#TinForm .form-group,
+#InfoForm #SchemeFormGroup {
+    margin: 20px;
+}
 
 /*Customer Info View*/
 #InfoForm {
@@ -200,6 +205,15 @@ form > input {
 }
 #AdminInfoForm .importWarning {
     font-style: italic;
+}
+
+.spinner {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 20%;
 }
 
 @media (min-width: 1200px) {

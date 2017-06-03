@@ -31,6 +31,45 @@ var self = module.exports = {
         done(new Error('No TIN/PAN/STN specified'));
     },
 
+    uniqueTin: function (info, done) {
+        // No two entries can have same TIN
+        customers.find({'tin': info.tin}, function (err, data) {
+            if (err)
+                return done(err);
+            if (data.length != 0)
+                return done(new Error('TIN already present'));
+            done(null, data);
+        });
+    },
+
+    uniquePan: function (info, done) {
+        // If there are multiple entries with same PAN
+        // both must have TIN present
+        customers.find({'pan': info.pan}, function (err, data) {
+            if (err)
+                return done(err);
+            if (data.length > 0) {
+                if (!data[0].tin || !info.tin)
+                    return done(new Error('PAN already present'));
+            }
+            done(null, data);
+        });
+    },
+
+    uniqueStn: function (info, done) {
+        // If there are multiple entries with same STN
+        // both must have TIN present
+        customers.find({'stn': info.stn}, function (err, data) {
+            if (err)
+                return done(err);
+            if (data.length > 0) {
+                if (!data[0].tin || !info.tin)
+                    return done(new Error('STN already present'));
+            }
+            done(null, data);
+        });
+    },
+
     find: function (info, done) {
         self.uniqueID(info, function (err, prop, value) {
             if (err)
@@ -46,6 +85,49 @@ var self = module.exports = {
         });
     },
 
+    validateAdd: function (info, done) {
+        async.series([
+            function (next) {
+                self.uniqueID(info, function (err, prop, value) {
+                    if (err)
+                        return next(err);
+                    next();
+                });
+            },
+            function (next) {
+                if (!info.tin)
+                    return next();
+                self.uniqueTin(info, function (err, data) {
+                    if (err)
+                        return next(err);
+                    next();
+                });
+            },
+            function (next) {
+                if (!info.pan)
+                    return next();
+                self.uniquePan(info, function (err, data) {
+                    if (err)
+                        return next(err);
+                    next();
+                });
+            },
+            function (next) {
+                if (!info.stn)
+                    return next();
+                self.uniqueStn(info, function (err, data) {
+                    if (err)
+                        return next(err);
+                    next();
+                });
+            }
+        ], function (err) {
+            if (err)
+                return done(err);
+            done();
+        });
+    },
+
     add: function (info, done) {
         self.uniqueID(info, function (err, prop, value) {
             if (err)
@@ -58,7 +140,8 @@ var self = module.exports = {
             customers.create(info, function (err, data) {
                 if (err)
                     return done(err);
-                done();
+                console.log('ID: ', data._id);
+                done(null, data);
             });
         });
     },
@@ -68,15 +151,8 @@ var self = module.exports = {
         var result;
         var newProp;
 
+        // Fetch old object. Check that the new IDs added are unique.
         async.series([
-            function (next) {
-                self.uniqueID(info, function (err, prop, value) {
-                    if (err)
-                        return next(err);
-                    newProp = prop;
-                    next();
-                });
-            },
             function (next) {
                 // Fetch older object from the database
                 console.log('ID: ', info._id);
@@ -88,19 +164,35 @@ var self = module.exports = {
                 });
             },
             function (next) {
-                if (old[newProp]) {
-                    if (old[newProp] !== info[newProp])
-                        return next(new Error("Same DB ID but different customer ID"));
+                // TIN is not updated or not present
+                if (old.tin || !info.tin)
                     return next();
-                }
-
-                var query = {};
-                query[newProp] = info[newProp];
-                customers.findOne(query, function (err, data) {
+                // TIN is newly added.
+                self.uniqueTin(info, function (err, data) {
                     if (err)
                         return next(err);
-                    if (data)
-                        return next(new Error("Another entry with same " + newProp + " already present !"));
+                    next();
+                });
+            },
+            function (next) {
+                // PAN is not updated or not present
+                if (old.pan || !info.pan)
+                    return next();
+                // PAN is newly added.
+                self.uniquePan(info, function (err, data) {
+                    if (err)
+                        return next(err);
+                    next();
+                });
+            },
+            function (next) {
+                // STN is not updated or not present
+                if (old.stn || !info.stn)
+                    return next();
+                // STN is newly added
+                self.uniqueStn(info, function (err, data) {
+                    if (err)
+                        return next(err);
                     next();
                 });
             },

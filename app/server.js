@@ -19,13 +19,12 @@ var cert;
 var conf = {
     port: 4000,
     hostip: '10.0.0.100',
-    //dbfile: path.resolve(__dirname + '/data/contacts.json'),
     staticDir: 'public',
     mongodbUrl: 'mongodb://hspatki:hspatki@ds151451.mlab.com:51451/hspatki',
+    //mongodbUrl: 'mongodb://localhost:27017/hspatki'
     https: true,
     httpsPath: __dirname + '/ssl',
     heroku: process.env.PORT ? true : false
-    // mongodbUrl: 'mongodb://localhost:27017/hspatki'
 };
 
 async.series([
