@@ -21,7 +21,7 @@ var conf = {
     hostip: '10.0.0.100',
     staticDir: 'public',
     mongodbUrl: 'mongodb://hspatki:hspatki@ds151451.mlab.com:51451/hspatki',
-    //mongodbUrl: 'mongodb://localhost:27017/hspatki'
+    //mongodbUrl: 'mongodb://localhost:27017/hspatki',
     https: true,
     httpsPath: __dirname + '/ssl',
     heroku: process.env.PORT ? true : false
